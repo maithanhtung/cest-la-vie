@@ -54,7 +54,7 @@ class QuanlyController extends Controller
 
         $giaovien->gv_magv = $gv_magv;
         $giaovien->gv_ten = $gv_ten;
-        $giaovien->password = $password;
+        $giaovien->password = bcrypt($password);
 
        $giaovien->save();
 

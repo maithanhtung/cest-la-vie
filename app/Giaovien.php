@@ -2,9 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Giaovien extends Model
+
+class Giaovien extends Authenticatable
 {
 	protected $table = 'giaovien';
     protected $fillable = [

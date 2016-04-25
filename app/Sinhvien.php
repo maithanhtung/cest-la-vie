@@ -2,9 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Sinhvien extends Model
+
+class Sinhvien extends  Authenticatable
 {
 	protected $table = 'sinhvien';
      protected $fillable = [

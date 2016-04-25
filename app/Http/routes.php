@@ -79,7 +79,7 @@ Route::group(['middleware' => ['giaovien']], function () {
     
     Route::get('/giaovien/dashboard','GiaovienController@viewDashboard')->name('viewgiaovienDashboard');
 
-    
+   
 
 }); 
 
