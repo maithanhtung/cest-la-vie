@@ -9,7 +9,7 @@
 
     </head>
     <body>
-    <h3>Login sucess</h3>
+    <h3>Login success</h3>
     <button><a href="{{ url('/quanly/logout') }}">Logout</a></button><br>
 
     <h1><center>Quan ly home page</center></h1>

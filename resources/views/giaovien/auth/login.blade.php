@@ -10,15 +10,15 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/giaovien/login') }}">
                         {!! csrf_field() !!}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="form-group{{ $errors->has('gv_magv') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Ma giao vien</label>
 
                             <div class="col-md-6">
-                                <input  class="form-control" name="gv_magv" value="{{ old('email') }}">
+                                <input  class="form-control" name="gv_magv" value="{{ old('gv_magv') }}">
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('gv_magv'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('gv_magv') }}</strong>
                                     </span>
                                 @endif
                             </div>

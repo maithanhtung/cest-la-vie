@@ -34,6 +34,11 @@
             <button><a href="{{ url('/quanly/addsv') }}">Them sinh vien</a></button>
 
         </div>
+            @if(!empty(Session::get('tensinhvien')))
+           
+            Sinh vien <strong>{{ Session::get('tensinhvien')}}</strong> has been deleted successfully!
+            
+            @endif
     </body>
     <style>
 table, th, td {

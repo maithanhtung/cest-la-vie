@@ -40,6 +40,11 @@
             <button><a href="{{ url('/quanly/addmon') }}">Them mon</a></button>
 
         </div>
+            @if(!empty(Session::get('tenmon')))
+           
+            Mon hoc <strong>{{ Session::get('tenmon')}}</strong> has been deleted successfully!
+            
+            @endif
     </body>
     <style>
 table, th, td {

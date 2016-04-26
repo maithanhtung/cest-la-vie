@@ -9,17 +9,17 @@
                 </tr>
            <tr>    
              <td>Ma giao vien: </td>  
-             <td> {!! Form::input('string', 'magiaovien') !!}</td>
+             <td> {!! Form::input('string', 'gv_magv') !!}</td>
           </tr>
 
             <tr>    
              <td>Ten giao vien: </td>  
-             <td>{!! Form::input('string', 'tengiaovien') !!}</td>
+             <td>{!! Form::input('string', 'gv_ten') !!}</td>
            </tr>
 
            <tr>    
              <td>Mat khau:</td>  
-             <td> {!! Form::input('string', 'matkhau') !!}</td>
+             <td> {!! Form::input('string', 'password') !!}</td>
           </tr>
 
             
@@ -30,9 +30,11 @@
             {!! Form::close() !!}
 
         </div>
-
+        @if ($errors->has('gv_magv'))<strong>{{ $errors->first('gv_magv') }}</strong> @endif
+        @if ($errors->has('gv_ten'))<strong>{{ $errors->first('gv_ten') }}</strong> @endif
+        @if ($errors->has('password'))<strong>{{ $errors->first('password') }}</strong> @endif
         @if(!empty(Session::get('tengiaovien')))
            
-            Giao vien <strong>{{ Session::get('tengiaovien')}}</strong> has been added sucesfully!
+            Giao vien <strong>{{ Session::get('tengiaovien')}}</strong> has been added successfully!
             
          @endif

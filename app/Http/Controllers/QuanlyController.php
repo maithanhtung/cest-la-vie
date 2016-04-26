@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Cookie;
+
+use Validator;
 use App\Dangky;
 use App\Giaovien;
 use App\Lophoc;
@@ -46,9 +48,22 @@ class QuanlyController extends Controller
 	}
 
     public function postGiaovien(Request $request){
-    	$gv_magv = $request->input('magiaovien');
-    	$gv_ten = $request->input('tengiaovien');
-    	$password = $request->input('matkhau');
+
+        $validator = Validator::make($request->all(), [
+            'gv_magv' => 'required|unique:giaovien|max:255',
+            'gv_ten' => 'required',
+            'password' => 'required|min:6',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('quanly/addgv')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        else{
+    	$gv_magv = $request->input('gv_magv');
+    	$gv_ten = $request->input('gv_ten');
+    	$password = $request->input('password');
 
     	$giaovien = new Giaovien;
 
@@ -59,6 +74,7 @@ class QuanlyController extends Controller
        $giaovien->save();
 
        return redirect()->back()->with('tengiaovien', $gv_ten);
+        }
     }
 
     public function delGiaovien($gv_id){
@@ -78,9 +94,22 @@ class QuanlyController extends Controller
 	}
 
     public function postSinhvien(Request $request){
-    	$sv_masv = $request->input('masinhvien');
-    	$sv_ten = $request->input('tensinhvien');
-    	$password = $request->input('matkhau');
+
+        $validator = Validator::make($request->all(), [
+            'sv_masv' => 'required|unique:sinhvien|max:255',
+            'sv_ten' => 'required',
+            'password' => 'required|min:6',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('quanly/addsv')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        else{
+    	$sv_masv = $request->input('sv_masv');
+    	$sv_ten = $request->input('sv_ten');
+    	$password = $request->input('password');
 
     	$sinhvien = new Sinhvien;
 
@@ -91,6 +120,7 @@ class QuanlyController extends Controller
        $sinhvien->save();
 
        return redirect()->back()->with('tensinhvien', $sv_ten);
+        }
     }
 
     public function delSinhvien($sv_id){
@@ -112,8 +142,20 @@ class QuanlyController extends Controller
 	}
 
     public function postMonhoc(Request $request){
-    	$mon_mamon = $request->input('mamonhoc');
-    	$mon_tenmon = $request->input('tenmonhoc');
+      $validator = Validator::make($request->all(), [
+            'mon_mamon' => 'required|unique:monhoc|max:255',
+            'mon_tenmon' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('quanly/addmon')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        else{
+
+        $mon_mamon = $request->input('mon_mamon');
+    	$mon_tenmon = $request->input('mon_tenmon');
     	
 
     	$monhoc = new Monhoc;
@@ -126,6 +168,7 @@ class QuanlyController extends Controller
 
        return redirect()->back()->with('tenmonhoc', $mon_tenmon);
     }
+}
 
     public function delMonhoc($mon_id){
 

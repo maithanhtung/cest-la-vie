@@ -9,13 +9,14 @@
                 </tr>
            <tr>    
              <td>Ma mon hoc: </td>  
-             <td> {!! Form::input('string', 'mamonhoc') !!}</td>
+             <td> {!! Form::input('string', 'mon_mamon') !!}</td>
           </tr>
-
+             
             <tr>    
              <td>Ten mon hoc: </td>  
-             <td>{!! Form::input('string', 'tenmonhoc') !!}</td>
+             <td>{!! Form::input('string', 'mon_tenmon') !!}</td>
            </tr>
+              
    
        </table>
        <br>
@@ -24,9 +25,10 @@
             {!! Form::close() !!}
 
         </div>
-
+         @if ($errors->has('mon_mamon'))<strong>{{ $errors->first('mon_mamon') }}</strong> @endif
+         @if ($errors->has('mon_tenmon'))<strong>{{ $errors->first('mon_tenmon') }}</strong> @endif
         @if(!empty(Session::get('tenmonhoc')))
            
-            Mon <strong>{{ Session::get('tenmonhoc')}}</strong> has been added sucesfully!
+            Mon <strong>{{ Session::get('tenmonhoc')}}</strong> has been added successfully!
             
          @endif
