@@ -78,10 +78,13 @@ Route::get('/giaovien/logout','GiaovienAuth\AuthController@logout');
 Route::get('/home', function () {
      return view('home');
     });
+
+
+
 Route::group(['middleware' => ['giaovien']], function () {
     
-    Route::get('/giaovien/dashboard','GiaovienController@viewDashboard')->name('viewgiaovienDashboard');
-
+    
+Route::get('/giaovien/dashboard','GiaovienController@viewDashboard')->name('viewgiaovienDashboard');
    
 
 }); 
