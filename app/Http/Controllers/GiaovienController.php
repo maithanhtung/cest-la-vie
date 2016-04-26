@@ -21,9 +21,6 @@ class GiaovienController extends Controller
    }
 
    public function viewDashboard(){
-        
-       
-
-        return view('giaovien.dashboard');
+        echo "asds";
     }
 }

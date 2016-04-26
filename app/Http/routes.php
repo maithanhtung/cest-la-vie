@@ -75,6 +75,9 @@ Route::get('/giaovien/login','GiaovienAuth\AuthController@showLoginForm');
 Route::post('/giaovien/login','GiaovienAuth\AuthController@login');
 Route::get('/giaovien/logout','GiaovienAuth\AuthController@logout');
 
+Route::get('/home', function () {
+     return view('home');
+    });
 Route::group(['middleware' => ['giaovien']], function () {
     
     Route::get('/giaovien/dashboard','GiaovienController@viewDashboard')->name('viewgiaovienDashboard');
