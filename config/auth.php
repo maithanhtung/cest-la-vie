@@ -51,6 +51,11 @@ return [
             'provider' => 'giaoviens',
         ],
 
+         'sinhvien' => [
+            'driver' => 'session',
+            'provider' => 'sinhviens',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -87,7 +92,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Giaovien::class,
         ],
-
+        'sinhviens' => [
+            'driver' => 'database',
+            'table' => 'sinhvien',
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

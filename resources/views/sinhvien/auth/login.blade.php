@@ -5,20 +5,20 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Login as Giao vien</div>
+                <div class="panel-heading">Login</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('giaovien/login') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('sinhvien/login') }}">
                         {!! csrf_field() !!}
 
-                        <div class="form-group{{ $errors->has('gv_magv') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Ma giao vien</label>
+                        <div class="form-group{{ $errors->has('sv_masv') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input  class="form-control" name="gv_magv" value="{{ old('gv_magv') }}">
+                                <input type="sv_masv" class="form-control" name="sv_masv" value="{{ old('sv_masv') }}">
 
-                                @if ($errors->has('gv_magv'))
+                                @if ($errors->has('sv_masv'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('gv_magv') }}</strong>
+                                        <strong>{{ $errors->first('sv_masv') }}</strong>
                                     </span>
                                 @endif
                             </div>

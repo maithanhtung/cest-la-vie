@@ -115,7 +115,7 @@ class QuanlyController extends Controller
 
         $sinhvien->sv_masv = $sv_masv;
         $sinhvien->sv_ten = $sv_ten;
-        $sinhvien->password = $password;
+        $sinhvien->password = bcrypt($password);
 
        $sinhvien->save();
 

@@ -64,11 +64,11 @@ Route::group(['middleware' => ['quanly']], function () {
     Route::delete('/quanly/viewgv/{gv_id}', array('uses' => 'QuanlyController@delGiaovien', 'as' => 'delGiaovien'));  
 });
 // -------------------------------------------SINH VIEN-----------------------------------------
-Route::group(['middleware' => ['auth','web']], function(){
-	// Route::get('/sinhvien/home', function () {
-	// 	return view('sinhvien.sinhvien_home');
-	// });
-});
+Route::get('/sinhvien/login','SinhvienAuth\AuthController@showLoginForm');
+Route::post('/sinhvien/login','SinhvienAuth\AuthController@login');
+Route::get('/sinhvien/logout','SinhvienAuth\AuthController@logout');
+Route::get('/sinhvien/dashboard','SinhvienController@viewDashboard')->name('viewsinhvienDashboard');
+Route::get('/sinhvien/home','SinhvienController@index');
 
 // -------------------------------------------GIAO VIEN-----------------------------------------
 Route::get('/giaovien/login','GiaovienAuth\AuthController@showLoginForm');
@@ -81,18 +81,15 @@ Route::get('/home', function () {
 
 Route::get('/giaovien','GiaovienController@index');
 
-Route::group(['middleware' => ['giaovien']], function () {
+// Route::group(['middleware' => ['giaovien']], function () {
     
-    
-    Route::get('/giaovien/dashboard','GiaovienController@viewDashboard')->name('viewgiaovienDashboard');
+Route::get('/giaovien/dashboard','GiaovienController@viewDashboard')->name('viewgiaovienDashboard');
 
 
    
 
-}); 
-
 //--------------------------------------------INDEX---------------------------------------------
-Route::auth();
+// Route::auth();
 
 Route::get('/',function(){
 	return view('index');

@@ -51,5 +51,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'quanly' => \App\Http\Middleware\Quanly::class,
         'giaovien' => \App\Http\Middleware\Giaovien::class,
+        'sinhvien' => \App\Http\Middleware\Sinhvien::class,
     ];
 }

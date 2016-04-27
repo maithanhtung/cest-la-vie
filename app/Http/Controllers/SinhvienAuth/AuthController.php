@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\GiaovienAuth;
+namespace App\Http\Controllers\SinhvienAuth;
 
-use App\Giaovien;
+use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-
-
 
 class AuthController extends Controller
 {
@@ -51,8 +49,8 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'gv_ten' => 'required|max:255',
-            'gv_magv' => 'required|max:255|unique:giaovien',
+            'sv_ten' => 'required|max:255',
+            'sv_masv' => 'required|max:255|unique:sinhvien',
             'password' => 'required|min:6',
         ]);
     }
@@ -65,27 +63,22 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return Giaovien::create([
-            'gv_ten' => $data['gv_ten'],
-            'gv_magv' => $data['gv_magv'],
+        return User::create([
+            'sv_ten' => $data['sv_ten'],
+            'sv_masv' => $data['sv_masv'],
             'password' => bcrypt($data['password']),
         ]);
     }
 
-    
-    protected $username = 'gv_magv';
-
-
-    // protected $redirectPath = '/giaovien/dashboard';
-    protected $redirectTo = '/giaovien';
-    protected $guard = 'giaovien';
+    protected $username = 'sv_masv';
+    protected $redirectPath = '/sinhvien/dashboard';
+    protected $redirectTo = '/sinhvien';
+    protected $guard = 'sinhvien';
     
     public function showLoginForm()
     {
-        if (view()->exists('auth.authenticate')) {
-        return view('auth.authenticate');
-        }
+       
 
-    return view('giaovien.auth.login');
+    return view('sinhvien.auth.login');
     }
 }
