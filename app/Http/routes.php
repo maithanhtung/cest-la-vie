@@ -79,12 +79,14 @@ Route::get('/home', function () {
      return view('home');
     });
 
-
+Route::get('/giaovien','GiaovienController@index');
 
 Route::group(['middleware' => ['giaovien']], function () {
     
     
-Route::get('/giaovien/dashboard','GiaovienController@viewDashboard')->name('viewgiaovienDashboard');
+    Route::get('/giaovien/dashboard','GiaovienController@viewDashboard')->name('viewgiaovienDashboard');
+
+
    
 
 }); 

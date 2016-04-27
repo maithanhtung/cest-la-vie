@@ -53,7 +53,7 @@ class AuthController extends Controller
         return Validator::make($data, [
             'gv_ten' => 'required|max:255',
             'gv_magv' => 'required|max:255|unique:giaovien',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:6',
         ]);
     }
 
@@ -76,7 +76,7 @@ class AuthController extends Controller
     protected $username = 'gv_magv';
 
 
-    protected $redirectPath = '/giaovien/dashboard';
+    // protected $redirectPath = '/giaovien/dashboard';
     protected $redirectTo = '/giaovien';
     protected $guard = 'giaovien';
     

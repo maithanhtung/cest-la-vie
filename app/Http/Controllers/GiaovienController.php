@@ -19,6 +19,9 @@ class GiaovienController extends Controller
     public function __construct(){
         $this->middleware('giaovien');
    }
+   public function index(){
+        return view('giaovien.dashboard');
+    }
 
    public function viewDashboard(){
         echo "asds";
