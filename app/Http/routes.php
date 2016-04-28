@@ -61,7 +61,7 @@ Route::group(['middleware' => ['quanly']], function () {
 
     Route::post('/quanly/addgv','QuanlyController@postGiaovien')->name('postGiaovien');
 
-    Route::delete('/quanly/viewgv/{gv_id}', array('uses' => 'QuanlyController@delGiaovien', 'as' => 'delGiaovien'));  
+    Route::delete('/quanly/viewgv/{gv_id}','QuanlyController@delGiaovien')->name('delGiaovien');  
 });
 // -------------------------------------------SINH VIEN-----------------------------------------
 Route::get('/sinhvien/login','SinhvienAuth\AuthController@showLoginForm');
@@ -72,6 +72,10 @@ Route::group(['middleware' => ['sinhvien']], function () {
     Route::get('/sinhvien/dashboard','SinhvienController@viewDashboard')->name('viewsinhvienDashboard');
 
     Route::get('/sinhvien/viewlop/{mon_id}','SinhvienController@viewLophoc')->name('viewsinhvienLophoc');
+
+    Route::get('/sinhvien/dangky/{lop_id}','SinhvienController@dangky')->name('sinhvienDangky');
+
+    Route::get('/sinhvien/viewdangky','SinhvienController@viewDangky')->name('viewsinhvienDangky');
 
 });
 

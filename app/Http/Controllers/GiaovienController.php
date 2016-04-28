@@ -26,15 +26,20 @@ class GiaovienController extends Controller
     }
 
     public function viewDashboard(){
+    	if (Lophoc::where('gv_id',Auth::guard('giaovien')->user()->id)->exists()) {
+            $lops = Lophoc::where('gv_id',Auth::guard('giaovien')->user()->id)->get();
+            foreach ($lops as $lop) {
+            $mon_id = $lop->mon_id;
+            $mon = Monhoc::where('mon_id',$mon_id)->first();
+            $tenmon = $mon->mon_tenmon;
+            $lop->tenmon = $tenmon;
+            }
+        }
+        else{
+            $lops = null;
+        }    
     	
-    	$lops = Lophoc::all();
-    	foreach ($lops as $lop) {
-    		$mon_id = $lop->mon_id;
-    		$mon = Monhoc::where('mon_id',$mon_id)->first();
-    		$tenmon = $mon->mon_tenmon;
-    		$lop->tenmon = $tenmon;
-    	}
-
+    	
 
 
         return view('giaovien.dashboard',['lops' => $lops]);
@@ -50,8 +55,8 @@ class GiaovienController extends Controller
     	$validator = Validator::make($request->all(), [
             'ngaybatdau' => 'required|date|after:today',
             'ngaykethuc' => 'required|date|after:ngaybatdau',
-            'thoigianbatdau' => 'required',
-            'thoigianketthuc' => 'required',
+            'thoigianbatdau' => 'required|date_format:H:i',
+            'thoigianketthuc' => 'required|date_format:H:i|after:thoigianbatdau',
             'diadiemhoc' => 'required|max:255'
         ]);
 

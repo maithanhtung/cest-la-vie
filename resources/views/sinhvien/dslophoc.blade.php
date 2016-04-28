@@ -4,7 +4,7 @@
 	<title>Sinh vien</title>
 </head>
 <body>
-<button><a href="{{ url('/sinhvien/logout') }}">LOG OUT</a></button>
+<button><a href="{{ url('/sinhvien/dashboard') }}">Back</a></button>
 <br>
 <h1><center>Danh sach lop hoc cua mon {{ $tenmon }}</center></h1>
 		<div class="container">
@@ -28,14 +28,21 @@
                 <td>{{ $lop->ngaybatdau }}</td>
                 <td>{{ $lop->ngaykethuc}}</td>
                 <td>{{ $lop->gv_ten }}</td>
-                <td>chua co gi</td>  
+                <td><button><a href="{{ url('/sinhvien/dangky/'.$lop->lop_id) }}">Dang ky</a></button></td>  
             </tr> 
             
             @endforeach
             </table>          
 		
         </div>
+        <br>
+        @if(!empty(Session::get('mess')))
+           
+             <strong>{{ Session::get('mess') }}</strong>
+            
+         @endif
 </body>
+
 <style>
 table, th, td {
     border: 1px solid black;

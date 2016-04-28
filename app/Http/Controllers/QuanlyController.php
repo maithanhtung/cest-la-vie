@@ -78,10 +78,20 @@ class QuanlyController extends Controller
     }
 
     public function delGiaovien($gv_id){
-        $giaovien = Giaovien::where('gv_id',$gv_id)->first();
+        $giaovien = Giaovien::where('id',$gv_id)->first();
         $gv_ten = $giaovien->gv_ten;
-        Giaovien::where('gv_id',$gv_id)->delete();
-        Lophoc::where('gv_id',$gv_id)->delete();     
+        if (Lophoc::where('gv_id','=',$gv_id)->exists()) {
+            $lops = Lophoc::where('gv_id','=',$gv_id)->get();
+            foreach ($lops as $lop ) {
+                $lop_id = $lop->lop_id;
+                if (Dangky::where('lop_id','=',$lop_id)->exists())  {
+                    Dangky::where('lop_id','=',$lop_id)->delete();
+                }
+            }
+            
+        Lophoc::where('gv_id','=',$gv_id)->delete();  
+        }
+        Giaovien::where('id','=',$gv_id)->delete();
         return redirect()->back()->with('tengiaovien', $gv_ten);
 
 
@@ -125,11 +135,11 @@ class QuanlyController extends Controller
 
     public function delSinhvien($sv_id){
 
-        $sinhvien = Sinhvien::where('sv_id',$sv_id)->first();
+        $sinhvien = Sinhvien::where('id',$sv_id)->first();
         $sv_ten = $sinhvien->sv_ten;
-        Sinhvien::where('sv_id',$sv_id)->delete();
+        Sinhvien::where('id',$sv_id)->delete();
         if (Dangky::where('sv_id','=',$sv_id)->exists()) {
-            Dangky::where('sv_id',$sv_id)->delete();
+            Dangky::where('sv_id','=',$sv_id)->delete();
         }
              
         return redirect()->back()->with('tensinhvien', $sv_ten);

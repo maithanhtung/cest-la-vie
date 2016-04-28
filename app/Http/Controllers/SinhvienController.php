@@ -40,4 +40,45 @@ class SinhvienController extends Controller
 
       return view('sinhvien.dslophoc',['lops' => $lops, 'tenmon' => $tenmon]);
     }
+
+    public function dangky($lop_id){
+      if (Dangky::where('lop_id','=',$lop_id)->where('sv_id','=',Auth::guard('sinhvien')->user()->id)->exists() ) {
+        return redirect()->back()->with('mess','Ban da dang ky lop nay');
+      }
+      else{
+      $dangky = new Dangky;
+      $dangky->lop_id = $lop_id;
+      $dangky->sv_id = Auth::guard('sinhvien')->user()->id;
+      $dangky->save();
+
+      return redirect()->back()->with('mess','Dang ky thanh cong');
+      }
+    }
+
+    public function viewDangky(){
+      $sv_id = Auth::guard('sinhvien')->user()->id;
+      $dangkys = Dangky::where('sv_id',$sv_id)->get();
+      $lops =array();
+      $i = 0;
+      foreach ($dangkys as $dangky) {
+          $lop_id = $dangky->lop_id;
+          $lops[$i] = Lophoc::where('lop_id',$lop_id)->first();
+          $gv_id = $lops[$i]->gv_id;
+          $giaovien = Giaovien::where('id',$gv_id)->first();
+          $lops[$i]->gv_ten = $giaovien->gv_ten;
+          // echo $lops[$i]->lop_id;
+          // echo $lops[$i];
+          // $lops['lop_id'][$i] = $lop->lop_id;
+          $i++;
+          // echo "?";
+          // echo $i;
+          // echo $lops['lop_id'][$i];
+      }
+      // for ($i=0; $i < count($lops); $i++) { 
+      //   echo $lops[$i]->lop_id;
+      // }
+
+      return view('sinhvien.dsdangky',['lops' => $lops]);
+
+    }
 }
