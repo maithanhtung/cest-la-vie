@@ -9,7 +9,12 @@
 
     </head>
     <body>
-    <h3>Login success</h3>
+    @if(Auth::guard('quanly')->check())
+      <h3>Welcome  {{ Auth::guard('quanly')->user()->name }}</h3>
+      @endif
+    
+
+        
     <button><a href="{{ url('/quanly/logout') }}">Logout</a></button><br>
 
     <h1><center>Quan ly home page</center></h1>
@@ -49,6 +54,7 @@
            
             </table>
         </div>
+       
     </body>
     <style>
 table, th, td {

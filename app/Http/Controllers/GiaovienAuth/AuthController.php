@@ -74,9 +74,7 @@ class AuthController extends Controller
 
     
     protected $username = 'gv_magv';
-
-
-    // protected $redirectPath = '/giaovien/dashboard';
+    protected $redirectPath = '/giaovien/dashboard';
     protected $redirectTo = '/giaovien';
     protected $guard = 'giaovien';
     

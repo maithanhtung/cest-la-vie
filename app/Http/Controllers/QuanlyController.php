@@ -144,7 +144,7 @@ class QuanlyController extends Controller
     public function postMonhoc(Request $request){
       $validator = Validator::make($request->all(), [
             'mon_mamon' => 'required|unique:monhoc|max:255',
-            'mon_tenmon' => 'required',
+            'mon_tenmon' => 'required|unique:monhoc|max:255',
         ]);
 
         if ($validator->fails()) {

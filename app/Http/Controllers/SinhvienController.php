@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Requests;
@@ -19,11 +20,24 @@ class SinhvienController extends Controller
     public function __construct(){
         $this->middleware('sinhvien');
    }
-   public function index(){
-        return view('sinhvien.home');
+   
+
+    public function viewDashboard(){
+   	  $mons = Monhoc::all();
+      return view('sinhvien.dashboard',['mons' => $mons]);
     }
 
-   public function viewDashboard(){
-        echo "asds";
+    public function viewLophoc($mon_id){
+      $lops = Lophoc::where('mon_id',$mon_id)->get();
+      foreach ($lops as $lop ) {
+        $gv_id = $lop->gv_id;
+        $giaovien = Giaovien::where('id',$gv_id)->first();
+        $gv_ten = $giaovien->gv_ten;
+        $lop->gv_ten = $gv_ten; 
+      }
+      $mon = Monhoc::where('mon_id',$mon_id)->first();
+      $tenmon = $mon->mon_tenmon;
+
+      return view('sinhvien.dslophoc',['lops' => $lops, 'tenmon' => $tenmon]);
     }
 }

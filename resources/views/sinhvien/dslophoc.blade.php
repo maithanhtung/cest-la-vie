@@ -1,48 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Giao vien</title>
+	<title>Sinh vien</title>
 </head>
 <body>
-<h1><center>Trang chu giao vien</center></h1>
-<button><a href="{{ url('/giaovien/logout')}}">Log out</a></button>
+<button><a href="{{ url('/sinhvien/logout') }}">LOG OUT</a></button>
 <br>
-
+<h1><center>Danh sach lop hoc cua mon {{ $tenmon }}</center></h1>
 		<div class="container">
             <table style="width:100%; text-align:left;">
                 <tr>
-                    <th>Id lop</th>
-                    <th>Mon hoc</th>
-                    <th>Thoi gian bat dau</th> 
+                    <th>Id lop hoc</th>
+                    <th>Thoi gian bat dau</th>
                     <th>Thoi gian ket thuc</th>
                     <th>Ngay bat dau</th>
                     <th>Ngay ket thuc</th>
-                    <th>Danh sach sinh vien</th>
-                    <th>Huy lop</th>
-                    
+                    <th>Giao vien giang day</th>
+                    <th>Dang ky</th>
+                   
                     
                 </tr>
             @foreach ($lops as $lop)        
             <tr>
                 <td>{{ $lop->lop_id }}</td>
-                <td>{{ $lop->tenmon}}</td> 
                 <td>{{ $lop->thoigianbatdau }}</td>
                 <td>{{ $lop->thoigianketthuc }}</td>
                 <td>{{ $lop->ngaybatdau }}</td>
-                <td>{{ $lop->ngaykethuc }}</td>
-                <td>tam thoi chua co gi</td>
-                <td>nhu tren</td>
+                <td>{{ $lop->ngaykethuc}}</td>
+                <td>{{ $lop->gv_ten }}</td>
+                <td>chua co gi</td>  
             </tr> 
             
             @endforeach
             </table>          
-		<button><a href="{{ url('/giaovien/addlop') }}">ADD LOP</a></button>
+		
         </div>
-@if(Auth::guard('giaovien')->check())
-Welcome {{ Auth::guard('giaovien')->user()->gv_ten }}
-@endif
 </body>
-   <style>
+<style>
 table, th, td {
     border: 1px solid black;
 }

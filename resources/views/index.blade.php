@@ -4,7 +4,7 @@
 	<title>C'EST LA VIE</title>
 </head>
 <body>
-		<button><a href="{{ url('/sinhvien/home') }}">Sinh vien</a></button>
+		<button><a href="{{ url('/sinhvien/dashboard') }}">Sinh vien</a></button>
 		<br>
 		<button><a href="{{url('/quanly/dashboard')}}">Quan ly</a></button>
 		<br>

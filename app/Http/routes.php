@@ -67,25 +67,32 @@ Route::group(['middleware' => ['quanly']], function () {
 Route::get('/sinhvien/login','SinhvienAuth\AuthController@showLoginForm');
 Route::post('/sinhvien/login','SinhvienAuth\AuthController@login');
 Route::get('/sinhvien/logout','SinhvienAuth\AuthController@logout');
-Route::get('/sinhvien/dashboard','SinhvienController@viewDashboard')->name('viewsinhvienDashboard');
-Route::get('/sinhvien/home','SinhvienController@index');
+
+Route::group(['middleware' => ['sinhvien']], function () {
+    Route::get('/sinhvien/dashboard','SinhvienController@viewDashboard')->name('viewsinhvienDashboard');
+
+    Route::get('/sinhvien/viewlop/{mon_id}','SinhvienController@viewLophoc')->name('viewsinhvienLophoc');
+
+});
 
 // -------------------------------------------GIAO VIEN-----------------------------------------
 Route::get('/giaovien/login','GiaovienAuth\AuthController@showLoginForm');
 Route::post('/giaovien/login','GiaovienAuth\AuthController@login');
 Route::get('/giaovien/logout','GiaovienAuth\AuthController@logout');
 
-Route::get('/home', function () {
-     return view('home');
-    });
 
-Route::get('/giaovien','GiaovienController@index');
 
-// Route::group(['middleware' => ['giaovien']], function () {
+Route::get('/giaovien','GiaovienController@viewDashboard');
+
+Route::group(['middleware' => ['giaovien']], function () {
     
-Route::get('/giaovien/dashboard','GiaovienController@viewDashboard')->name('viewgiaovienDashboard');
+    Route::get('/giaovien/dashboard','GiaovienController@viewDashboard')->name('viewgiaovienDashboard');
 
+    Route::get('/giaovien/addlop','GiaovienController@viewaddlop')->name('viewaddlop');
 
+    Route::post('/giaovien/addlop','GiaovienController@postLophoc')->name('postLophoc');
+
+});
    
 
 //--------------------------------------------INDEX---------------------------------------------
