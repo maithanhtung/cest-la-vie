@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>C'EST LA VIE</title>
+	<title>C'estlavie</title>
 </head>
 <body>
-		<button><a href="{{ url('/sinhvien/dashboard') }}">Sinh vien</a></button>
+		<h1><center>C'EST LA VIE</center></h1>
+		<h3><center>You are...?</center></h3>
+		<button><a href="{{url('/sinhvien/dashboard')}}">Sinh vien</a></center></button>
 		<br>
 		<button><a href="{{url('/quanly/dashboard')}}">Quan ly</a></button>
 		<br>

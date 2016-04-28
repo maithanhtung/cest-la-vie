@@ -43,7 +43,7 @@ class SinhvienController extends Controller
 
     public function dangky($lop_id){
       if (Dangky::where('lop_id','=',$lop_id)->where('sv_id','=',Auth::guard('sinhvien')->user()->id)->exists() ) {
-        return redirect()->back()->with('mess','Ban da dang ky lop nay');
+        return redirect()->back()->with('dangky','Ban da dang ky lop nay');
       }
       else{
       $dangky = new Dangky;
@@ -51,7 +51,7 @@ class SinhvienController extends Controller
       $dangky->sv_id = Auth::guard('sinhvien')->user()->id;
       $dangky->save();
 
-      return redirect()->back()->with('mess','Dang ky thanh cong');
+      return redirect()->back()->with('dangky','Dang ky thanh cong');
       }
     }
 
@@ -66,6 +66,9 @@ class SinhvienController extends Controller
           $gv_id = $lops[$i]->gv_id;
           $giaovien = Giaovien::where('id',$gv_id)->first();
           $lops[$i]->gv_ten = $giaovien->gv_ten;
+          $mon_id = $lops[$i]->mon_id;
+          $mon = Monhoc::where('mon_id',$mon_id)->first();
+          $lops[$i]->mon_tenmon = $mon->mon_tenmon;
           // echo $lops[$i]->lop_id;
           // echo $lops[$i];
           // $lops['lop_id'][$i] = $lop->lop_id;
@@ -80,5 +83,12 @@ class SinhvienController extends Controller
 
       return view('sinhvien.dsdangky',['lops' => $lops]);
 
+    }
+
+    public function delDangky($lop_id){
+      if( Dangky::where('lop_id','=',$lop_id)->where('sv_id','=',Auth::guard('sinhvien')->user()->id)->exists() ){
+          Dangky::where('lop_id','=',$lop_id)->where('sv_id','=',Auth::guard('sinhvien')->user()->id)->delete();
+      }
+      return redirect()->back()->with('xoadangky','Huy dang ky thanh cong');
     }
 }

@@ -77,6 +77,8 @@ Route::group(['middleware' => ['sinhvien']], function () {
 
     Route::get('/sinhvien/viewdangky','SinhvienController@viewDangky')->name('viewsinhvienDangky');
 
+    Route::delete('/sinhvien/viewdangky/{lop_id}','SinhvienController@delDangky')->name('delDangky');
+
 });
 
 // -------------------------------------------GIAO VIEN-----------------------------------------
