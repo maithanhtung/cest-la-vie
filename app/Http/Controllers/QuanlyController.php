@@ -200,4 +200,10 @@ class QuanlyController extends Controller
     }
 
 
+//---------------------------------------LOPHOC-------------------------------------------------
+
+    public function viewLophoc(){
+        
+    }
+
 }

@@ -36,7 +36,7 @@
             <tr>
                 <td>Lop hoc</td>
                 <td>{{ $sllop }}</td> 
-                <td>tam thoi chua co</td>
+                <td><button><a href="{{ url('/quanly/viewlop') }}">Chi tiet</a></button></td>
             </tr>
 			
 			 <tr>

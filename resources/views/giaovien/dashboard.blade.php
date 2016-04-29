@@ -38,8 +38,10 @@ Xin chao {{ Auth::guard('giaovien')->user()->gv_ten }}
                 <td>{{ $lop->ngaybatdau }}</td>
                 <td>{{ $lop->ngaykethuc }}</td>
                 <td>{{ $lop->diadiemhoc }}</td>
-                <td>tam thoi chua co gi</td>
-                <td>nhu tren</td>
+                <td><button><a href="{{ url('/giaovien/viewdangky/'.$lop->lop_id) }}">Chi tiet</a></button></td>
+                {{ Form::open(['route' => ['delLophoc', $lop->lop_id], 'method' => 'delete']) }}
+                <td> <button type="submit">Huy lop hoc</button></td>
+                                    {{ Form::close() }}
             </tr> 
             
             @endforeach
@@ -48,6 +50,12 @@ Xin chao {{ Auth::guard('giaovien')->user()->gv_ten }}
 		<button><a href="{{ url('/giaovien/addlop') }}">ADD LOP</a></button>
         </div>
 
+        <br>
+         @if(!empty(Session::get('xoalophoc')))
+           
+             <strong>{{ Session::get('xoalophoc') }}</strong>
+            
+         @endif
 </body>
    <style>
 table, th, td {

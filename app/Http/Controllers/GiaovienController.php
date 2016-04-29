@@ -91,4 +91,27 @@ class GiaovienController extends Controller
         }
 
     }
+
+    public function viewDangky($lop_id){
+        $dangkys = Dangky::where('lop_id',$lop_id)->get();
+        $sinhviens = array();
+        $i = 0;
+        foreach ($dangkys as $dangky) {
+            $sv_id = $dangky->sv_id;
+            $sinhviens[$i] = Sinhvien::where('id',$sv_id)->first();
+            $sinhviens[$i]->created_at = $dangky->created_at;
+            $i++; 
+        }
+        
+        return view('giaovien.dsdangky',['sinhviens' => $sinhviens]);
+    }
+
+    public function delLophoc($lop_id){
+        $lop = Lophoc::where('lop_id',$lop_id)->first();
+        if( Dangky::where('lop_id',$lop_id)->exists() ){
+          Dangky::where('lop_id',$lop_id)->delete();
+        }
+        Lophoc::where('lop_id',$lop_id)->delete();
+      return redirect()->back()->with('xoalophoc','Huy lop hoc thanh cong');
+    }
 }

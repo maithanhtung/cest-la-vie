@@ -31,6 +31,19 @@ Route::group(['middleware' => ['quanly']], function () {
     // Route::get('/quanly/dashboard',function(){
     // 	return view('quanly.dashboard');})->name('viewdashboard');
     Route::get('/quanly/dashboard','QuanlyController@viewDashboard')->name('viewquanlyDashboard');
+
+//----MON
+    Route::get('/quanly/viewmon','QuanlyController@viewMonhoc')->name('viewquanlyMonhoc');
+
+    Route::get('/quanly/addmon',function(){
+        return view('quanly.addmon');})->name('viewaddmon');
+
+    Route::post('/quanly/addmon','QuanlyController@postMonhoc')->name('postMonhoc');
+
+    Route::delete('/quanly/viewmon/{mon_id}', array('uses' => 'QuanlyController@delMonhoc', 'as' => 'delMonhoc'));
+
+//----LOP
+    Route::get('/quanly/viewlop','QuanlyController@viewLophoc')->name('viewquanlyLophoc');
     
 //----SV
     Route::get('/quanly/viewsv','QuanlyController@viewSinhvien')->name('viewSinhvien');
@@ -42,16 +55,6 @@ Route::group(['middleware' => ['quanly']], function () {
 
     Route::delete('/quanly/viewsv/{sv_id}', array('uses' => 'QuanlyController@delSinhvien', 'as' => 'delSinhvien'));  
   
-//----MON
-    Route::get('/quanly/viewmon','QuanlyController@viewMonhoc')->name('viewMonhoc');
-
-    Route::get('/quanly/addmon',function(){
-    	return view('quanly.addmon');})->name('viewaddmon');
-
-    Route::post('/quanly/addmon','QuanlyController@postMonhoc')->name('postMonhoc');
-
-    Route::delete('/quanly/viewmon/{mon_id}', array('uses' => 'QuanlyController@delMonhoc', 'as' => 'delMonhoc'));
- 
 
 //----GV
     Route::get('/quanly/viewgv','QuanlyController@viewGiaovien')->name('viewGiaovien');
@@ -69,6 +72,7 @@ Route::post('/sinhvien/login','SinhvienAuth\AuthController@login');
 Route::get('/sinhvien/logout','SinhvienAuth\AuthController@logout');
 
 Route::group(['middleware' => ['sinhvien']], function () {
+
     Route::get('/sinhvien/dashboard','SinhvienController@viewDashboard')->name('viewsinhvienDashboard');
 
     Route::get('/sinhvien/viewlop/{mon_id}','SinhvienController@viewLophoc')->name('viewsinhvienLophoc');
@@ -85,9 +89,6 @@ Route::group(['middleware' => ['sinhvien']], function () {
 Route::get('/giaovien/login','GiaovienAuth\AuthController@showLoginForm');
 Route::post('/giaovien/login','GiaovienAuth\AuthController@login');
 Route::get('/giaovien/logout','GiaovienAuth\AuthController@logout');
-
-
-
 Route::get('/giaovien','GiaovienController@viewDashboard');
 
 Route::group(['middleware' => ['giaovien']], function () {
@@ -98,6 +99,9 @@ Route::group(['middleware' => ['giaovien']], function () {
 
     Route::post('/giaovien/addlop','GiaovienController@postLophoc')->name('postLophoc');
 
+    Route::get('/giaovien/viewdangky/{lop_id}','GiaovienController@viewDangky')->name('viewgiaovienDangky');
+
+    Route::delete('/giaovien/dashboard/{lop_id}','GiaovienController@delLophoc')->name('delLophoc');
 });
    
 
