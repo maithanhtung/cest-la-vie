@@ -107,7 +107,6 @@ class GiaovienController extends Controller
     }
 
     public function delLophoc($lop_id){
-        $lop = Lophoc::where('lop_id',$lop_id)->first();
         if( Dangky::where('lop_id',$lop_id)->exists() ){
           Dangky::where('lop_id',$lop_id)->delete();
         }

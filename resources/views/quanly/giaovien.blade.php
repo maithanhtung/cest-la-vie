@@ -19,6 +19,7 @@
                     <th></th>
                     
                 </tr>
+            @if($giaoviens != null)
             @foreach ($giaoviens as $giaovien)        
             <tr>
                 <td>{{ $giaovien->gv_magv }}</td>
@@ -33,7 +34,8 @@
             @endforeach
             </table>
             <button><a href="{{ url('/quanly/addgv') }}">Them giao vien</a></button>
-
+            <h2>Co tong so {{ count($giaoviens) }} giao vien</h2>
+            @endif
         </div>
         @if(!empty(Session::get('tengiaovien')))
            

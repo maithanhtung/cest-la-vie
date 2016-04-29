@@ -133,6 +133,24 @@ class QuanlyController extends Controller
         }
     }
 
+    public function viewSinhviendk($sv_id){
+        $sv_ten = Sinhvien::where('id',$sv_id)->first()->sv_ten;
+        $dangkys = Dangky::where('sv_id',$sv_id)->get();
+        $lops = array();
+        $i = 0;
+        foreach ($dangkys as $dangky) {
+            $lop_id = $dangky->lop_id;
+            $lops[$i] = Lophoc::where('lop_id',$lop_id)->first();
+            $giaovien = Giaovien::where('id',$lops[$i]->gv_id)->first();
+            $monhoc = Monhoc::where('mon_id',$lops[$i]->mon_id)->first();
+            $lops[$i]->gv_ten = $giaovien->gv_ten;
+            $lops[$i]->mon_tenmon = $monhoc->mon_tenmon;
+            $lops[$i]->thoigiandangky = $dangky->created_at;
+            $i++;
+        }
+        return view('quanly.dslopSinhvien',['lops' => $lops , 'sv_ten' => $sv_ten]);
+    }
+
     public function delSinhvien($sv_id){
 
         $sinhvien = Sinhvien::where('id',$sv_id)->first();
@@ -203,7 +221,36 @@ class QuanlyController extends Controller
 //---------------------------------------LOPHOC-------------------------------------------------
 
     public function viewLophoc(){
-        
+        $lops = Lophoc::all();
+        foreach ($lops as $lop) {
+            $gv_id = $lop->gv_id;
+            $giaovien = Giaovien::where('id',$gv_id)->first();
+            $lop->gv_ten = $giaovien->gv_ten;
+            $mon_id = $lop->mon_id;
+            $mon = Monhoc::where('mon_id',$mon_id)->first();
+            $lop->mon_tenmon = $mon->mon_tenmon;
+        }
+        return view('quanly.lophoc',['lops' => $lops]);
+    }
+
+    public function viewSvlop($lop_id){
+        $dangkys = Dangky::where('lop_id',$lop_id)->get();
+        $sinhviens = array();
+        $i = 0;
+        foreach ($dangkys as $dangky) {
+            $sv_id = $dangky->sv_id;
+            $sinhviens[$i] = Sinhvien::where('id',$sv_id)->first();
+            $i++;
+        }
+        return view('quanly.dssvLophoc',['sinhviens' => $sinhviens]);
+    }
+
+    public function delLophoc($lop_id){
+        if( Dangky::where('lop_id',$lop_id)->exists() ){
+            Dangky::where('lop_id',$lop_id)->delete();
+        }
+        Lophoc::where('lop_id',$lop_id)->delete();
+      return redirect()->back()->with('xoalophoc','Huy lop hoc thanh cong');
     }
 
 }

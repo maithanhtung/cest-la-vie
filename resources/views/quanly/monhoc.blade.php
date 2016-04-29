@@ -25,6 +25,7 @@
                     <th></th>
                     <th></th> -->
                 </tr>
+            @if($mons != null)
             @foreach ($mons as $mon)        
             <tr>
                 <td>{{ $mon->mon_tenmon }}</td>
@@ -38,11 +39,12 @@
             @endforeach
             </table>
             <button><a href="{{ url('/quanly/addmon') }}">Them mon</a></button>
-
+            <h2>Co tong so {{ count($mons) }} mon hoc</h2>
+            @endif
         </div>
             @if(!empty(Session::get('tenmon')))
            
-            Mon hoc <strong>{{ Session::get('tenmon')}}</strong> has been deleted successfully!
+            Mon hoc <strong>{{ Session::get('tenmon')}}</strong> da duoc xoa thanh cong!
             
             @endif
     </body>

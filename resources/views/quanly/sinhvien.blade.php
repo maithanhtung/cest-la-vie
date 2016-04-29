@@ -19,12 +19,13 @@
                     <th></th>
                     
                 </tr>
+            @if($sinhviens != null)
             @foreach ($sinhviens as $sinhvien)        
             <tr>
                 <td>{{ $sinhvien->sv_masv }}</td>
                 <td>{{ $sinhvien->sv_ten }}</td> 
-                <td> tam thoi chua co gi</td>
-                {{ Form::open(['route' => ['delSinhvien', $sinhvien->sv_id], 'method' => 'delete']) }}
+                <td><button><a href="{{ url('/quanly/sinhviendk/'.$sinhvien->id)}}">xem</a></button></td>
+                {{ Form::open(['route' => ['delSinhvien', $sinhvien->id], 'method' => 'delete']) }}
                 <td> <button type="submit">Xoa SV</button></td>
                                     {{ Form::close() }}
             </tr> 
@@ -32,7 +33,8 @@
             @endforeach
             </table>
             <button><a href="{{ url('/quanly/addsv') }}">Them sinh vien</a></button>
-
+            <h2>Co tong so {{ count($sinhviens) }} sinh vien</h2>
+            @endif
         </div>
             @if(!empty(Session::get('tensinhvien')))
            
