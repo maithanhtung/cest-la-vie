@@ -30,7 +30,7 @@
             <tr>
                 <td>{{ $mon->mon_tenmon }}</td>
                 <td>{{ $mon->mon_mamon }}</td> 
-                <td> tam thoi chua co gi</td>
+                <td><button><a href="{{ url('/quanly/viewlopMon/'.$mon->mon_id) }}">{{ $mon->sllop }}</a></button></td>
                 {{ Form::open(['route' => ['delMonhoc', $mon->mon_id], 'method' => 'delete']) }}
                 <td> <button type="submit">Xoa Mon</button></td>
                                     {{ Form::close() }}

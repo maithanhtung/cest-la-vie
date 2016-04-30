@@ -35,6 +35,8 @@ Route::group(['middleware' => ['quanly']], function () {
 //----MON
     Route::get('/quanly/viewmon','QuanlyController@viewMonhoc')->name('viewquanlyMonhoc');
 
+    Route::get('/quanly/viewlopMon/{lop_id}','QuanlyController@viewlopMon')->name('viewquanlylopMonhoc');
+
     Route::get('/quanly/addmon',function(){
         return view('quanly.addmon');})->name('viewaddmon');
 
@@ -69,6 +71,10 @@ Route::group(['middleware' => ['quanly']], function () {
     	return view('quanly.addgv');})->name('viewaddgv');
 
     Route::post('/quanly/addgv','QuanlyController@postGiaovien')->name('postGiaovien');
+
+    Route::get('/quanly/viewlopGv/{id}','QuanlyController@viewlopGv')->name('viewquanlylopGv');
+
+    Route::get('/quanly/viewsvlopGv/{lop_id}','QuanlyController@viewsvlopGv')->name('viewquanlysvlopGv');
 
     Route::delete('/quanly/viewgv/{gv_id}','QuanlyController@delGiaovien')->name('delGiaovien');  
 });

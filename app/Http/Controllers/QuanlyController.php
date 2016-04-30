@@ -47,6 +47,30 @@ class QuanlyController extends Controller
 		return view('quanly.giaovien', ['giaoviens' => Giaovien::all()]);
 	}
 
+    public function viewlopGv($id){
+        $lops = Lophoc::where('gv_id',$id)->get();
+        foreach ($lops as $lop) {
+            $lop->mon_tenmon = Monhoc::where('mon_id',$lop->mon_id)->first()->mon_tenmon;
+        }
+        $gv_ten = Giaovien::where('id',$id)->first()->gv_ten;
+        return view('quanly.dslopGiaovien',['lops' => $lops , 'gv_ten' => $gv_ten]);
+    }
+
+    public function viewsvlopGv($lop_id){
+        $dangkys = Dangky::where('lop_id',$lop_id)->get();
+        foreach ($dangkys as $dangky) {
+            $sinhvien = Sinhvien::where('id',$dangky->sv_id)->first();
+            $dangky->sv_ten = $sinhvien->sv_ten;
+            $dangky->sv_masv = $sinhvien->sv_masv;
+        }
+        $lop = Lophoc::where('lop_id',$lop_id)->first();
+        $mon_tenmon =  Monhoc::where('mon_id',$lop->mon_id)->first()->mon_tenmon;
+        $gv_ten = Giaovien::where('id',$lop->gv_id)->first()->gv_ten;
+        $gv_id = $lop->gv_id;
+
+        return view('quanly/dssvlopGv',['dangkys' => $dangkys, 'mon_tenmon' => $mon_tenmon, 'gv_ten' => $gv_ten , 'gv_id' => $gv_id]);
+    }
+
     public function postGiaovien(Request $request){
 
         $validator = Validator::make($request->all(), [
@@ -166,8 +190,24 @@ class QuanlyController extends Controller
 
 //---------------------------------------MONHOC-------------------------------------------------
     public function viewMonhoc(){
-		return view('quanly.monhoc', ['mons' => Monhoc::all()]);
+        $mons = Monhoc::all();
+        foreach ($mons as $mon ) {
+            $lophocs = Lophoc::where('mon_id',$mon->mon_id)->get();
+            $mon->sllop = Count($lophocs);
+        }
+
+		return view('quanly.monhoc', ['mons' => $mons]);
 	}
+
+    public function viewlopMon($mon_id){
+        $lops = Lophoc::where('mon_id',$mon_id)->get();
+        foreach ($lops as $lop ) {
+            $giaovien = Giaovien::where('id',$lop->gv_id)->first();
+            $lop->gv_ten = $giaovien->gv_ten;
+        }
+        $mon_tenmon = Monhoc::where('mon_id',$mon_id)->first()->mon_tenmon;
+        return view('quanly.dslopMonhoc',['lops' => $lops , 'mon_tenmon' => $mon_tenmon]);
+    }
 
     public function postMonhoc(Request $request){
       $validator = Validator::make($request->all(), [

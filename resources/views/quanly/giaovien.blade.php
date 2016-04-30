@@ -24,7 +24,7 @@
             <tr>
                 <td>{{ $giaovien->gv_magv }}</td>
                 <td>{{ $giaovien->gv_ten }}</td> 
-                <td> tam thoi chua co gi</td>
+                <td><button><a href="{{ url('/quanly/viewlopGv/'.$giaovien->id) }}">Chi tiet</a></button></td>
                 {{ Form::open(['route' => ['delGiaovien', $giaovien->id], 'method' => 'delete']) }}
                 <td> <button type="submit">Xoa GV</button></td>
                                     {{ Form::close() }}
