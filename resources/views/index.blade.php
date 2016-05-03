@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>C'estlavie</title>
+	<title>Dang ky hoc</title>
+	<link href="{{ asset('assets/css/css.css') }}" rel="stylesheet" type="text/css" />
 </head>
-<body>
-		<h1><center>C'EST LA VIE</center></h1>
-		<h3><center>You are...?</center></h3>
 
-		<div class="button">
-		<button><a href="{{url('/sinhvien/dashboard')}}">Sinh vien</a></center></button>
-		<button><a href="{{url('/quanly/dashboard')}}">Quan ly</a></button>
-		<button><a href="{{url('/giaovien/dashboard')}}">Giao vien</a></button>
+<body id="ind">
+	<div id="header">
+		<h1>C'EST LA VIE</h1>
+	</div>
+	<h2> You are ... ? </h2>
+	<div class="butwrapind">
+		<div class="butind">
+			<a href="{{ url('quanly/dashboard')}}" >Director</a>
 		</div>
+	</div>
+	<div class="butwrapind">
+		<div class="butind">
+			<a href="{{ url('giaovien/dashboard')}}" >Teacher</a>
+		</div>
+	</div>
+	<div class="butwrapind">
+		<div class="butind">
+			<a href="{{ url('sinhvien/dashboard')}}" >Student</a>
+		</div>
+	</div>
 </body>
 
-<style type="text/css">
-	
 
+<footer>
+	<div id="footer">
+		<i><B>Star can't shine without darkness - C'est la vie</B></i>
+	</div>		
+</footer>
 
-div.button{
-	text-align: center;
-	margin :auto;
-}
-
-div.button button{
-	margin :10px;
-	display: inline-block;
-}
-</style>
 </html>
