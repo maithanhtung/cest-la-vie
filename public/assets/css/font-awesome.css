@@ -1,0 +1,5 @@
+function add_font_awesome() {   
+    wp_register_style('font-awesome-style', get_template_directory_uri() . '/lib/font-awesome/css/font-awesome.min.css');
+    wp_enqueue_style('font-awesome-style');
+}
+add_action('wp_enqueue_scripts', 'add_font_awesome');

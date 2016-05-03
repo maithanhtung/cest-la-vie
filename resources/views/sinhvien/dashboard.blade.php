@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sinh vien</title>
+	<title>Student</title>
+    <link href="{{ asset('assets/css/sv.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<button><a href="{{ url('/sinhvien/logout') }}">LOG OUT</a></button>
-<br>
-@if(Auth::guard('sinhvien')->check())
-Xin chao {{ Auth::guard('sinhvien')->user()->sv_ten }}
-@endif
-<h1><center>Danh sach mon hoc</center></h1>
-		<div class="container">
-            <table style="width:100%; text-align:left;">
-                <tr>
-                    <th>Mon hoc</th>
-                    <th>Danh sach lop</th> 
-                   
-                    
-                </tr>
-            @foreach ($mons as $mon)        
-            <tr>
-                <td>{{ $mon->mon_tenmon }}</td>
-                <td><button><a href="{{  url('/sinhvien/viewlop/'.$mon->mon_id) }}">Chi tiet</a></button></td>
-            </tr> 
-            
-            @endforeach
-            </table>          
-        </div>
-        <br>
-        <button><a href="{{ url('/sinhvien/viewdangky') }}">Danh sach lop da dang ky</a></button>
+
+    @if(Auth::guard('sinhvien')->check())
+    <h4 style="font-size:120%; color: white;">Hello, {{ Auth::guard('sinhvien')->user()->sv_ten }}</h4>
+    @endif
+
+    <button class="logout"><span><a href="{{ url('/sinhvien/logout') }}"><strong>LOG OUT</strong></a></span></button>
+
+    <h2 style="font-size: 250%; color: #00eaff;">Student Homepage</h2> 
+
+    <button class="rcl"><a href="{{ url('/sinhvien/viewdangky') }}">Registed class list</a></button>
+
+<div class="tbl">
+    <h3 style="font-size: 200%; color: white">Subject List</h3>
+
+    <table id="t01" style="width: 100%;">
+        <tr>
+            <th>No</th>
+            <th>Subject</th>
+            <th>Class list</th>        
+        </tr>
+        <?php $i=1; ?>
+        @foreach ($mons as $mon)        
+        <tr>
+            <td>{{$i}}</td>
+            <td>{{ $mon->mon_tenmon }}</td>
+            <td><button class="btn"><a href="{{  url('/sinhvien/viewlop/'.$mon->mon_id) }}">Detail</a></button></td>
+        </tr> 
+        <?php $i++; ?>
+        @endforeach
+    </table>          
+</div>
+    
 </body>
-<style>
-table, th, td {
-    border: 1px solid black;
-}
-</style>
 </html>

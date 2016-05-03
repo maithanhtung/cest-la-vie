@@ -10,6 +10,7 @@
 		<div class="container">
             <table style="width:100%; text-align:left;">
                 <tr>
+                    <th>So thu tu</th>
                     <th>Giao vien giang day</th>
                     <th>Thoi gian bat dau</th>
                     <th>Thoi gian ket thuc</th>
@@ -19,8 +20,10 @@
                    
                     
                 </tr>
+               <?php $i =1; ?>
             @foreach ($lops as $lop)        
             <tr>
+                <td>{{$i}}</td>
                 <td>{{ $lop->gv_ten }}</td>
                 <td>{{ $lop->thoigianbatdau }}</td>
                 <td>{{ $lop->thoigianketthuc }}</td>
@@ -28,7 +31,7 @@
                 <td>{{ $lop->ngaykethuc}}</td>
                 <td><button><a href="{{ url('/sinhvien/dangky/'.$lop->lop_id) }}">Dang ky</a></button></td>  
             </tr> 
-            
+            <?php $i++; ?>
             @endforeach
             </table>          
 		
