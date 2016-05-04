@@ -1,7 +1,7 @@
 body {
 	background-color: #ffc6b1;
-	background-image: url(../images/sv.jpg);
-	background-size: 100%;
+	background-image: url(../images/1.jpg);
+	background-size: 80% ;
 	font-family: Arial, sans-serif;
 }
 
@@ -79,13 +79,13 @@ div.tbl {
   overflow: auto;
 }
 table {
-	bor
+	
 	border-color: #167F92;
 	border-radius: 10px;
 }
 table, th, td {
-    text-align: left;
-    margin: 15px 0;
+  text-align: left;
+  margin: 15px 0;
 	border: none;
 }   
 th, td {
@@ -93,17 +93,17 @@ th, td {
 }
 th {
 	text-align: center;
-    padding: 15px;
-    font-size: 20px;
+  padding: 15px;
+  font-size: 20px;
 }
 td {
-    padding: 10px;
-    text-align: left;
-    border: none;
+  padding: 10px;
+  text-align: left;
+  border: none;
 }
-tr:hover{
-    background-color:#f5f5f5
-}
+/*table tr:hover{
+    background-color:#f5f5f5;
+}*/
 table td:first-child {
 	text-align: center;
 }
