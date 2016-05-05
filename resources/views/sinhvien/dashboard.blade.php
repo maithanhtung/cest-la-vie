@@ -14,12 +14,14 @@
 
     <h2 style="font-size: 250%; color: #00eaff;">Student Homepage</h2> 
 
-    <button class="rcl"><a href="{{ url('/sinhvien/viewdangky') }}">Registed class list</a></button>
+    <div class="rcl1">   
+        <button class="rcl"><a href="{{ url('/sinhvien/viewdangky') }}">Registered class list</a></button>
+    </div>
+<br><br>
+    <h3 style="font-size: 200%; color: white;"><center>Subject List</center></h3>
 
-<div class="tbl">
-    <h3 style="font-size: 200%; color: white">Subject List</h3>
-
-    <table id="t01" style="width: 100%;">
+<div class="tbl"><center>
+    <table id="t01">
         <tr>
             <th>No</th>
             <th>Subject</th>
@@ -27,15 +29,19 @@
         </tr>
         <?php $i=1; ?>
         @foreach ($mons as $mon)        
+        <tbody>
         <tr>
             <td>{{$i}}</td>
             <td>{{ $mon->mon_tenmon }}</td>
-            <td><button class="btn"><a href="{{  url('/sinhvien/viewlop/'.$mon->mon_id) }}">Detail</a></button></td>
-        </tr> 
+            <td><center><button class="btn"><a href="{{  url('/sinhvien/viewlop/'.$mon->mon_id) }}">Detail</a></button></center></td>
+        </tr>
+        </tbody> 
         <?php $i++; ?>
         @endforeach
     </table>          
-</div>
-    
+</center></div>
+  
 </body>
+
+
 </html>

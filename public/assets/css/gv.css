@@ -1,0 +1,8 @@
+body {
+	/*font-family: Arial, sans-serif;*/
+  	background: url(../images/gv.jpg) no-repeat center center fixed; 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+ 	-o-background-size: cover;
+ 	background-size: cover;
+}

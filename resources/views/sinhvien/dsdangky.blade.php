@@ -1,56 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sinh vien</title>
+    <title>Student</title>
+    <link href="{{ asset('assets/css/sv.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<button><a href="{{ url('/sinhvien/dashboard') }}">Back</a></button>
-<br>
-<h1><center>Danh sach lop hoc da dang ky</center></h1>
-        <div class="container">
-            <table style="width:100%; text-align:left;">
+    <h4 style="font-size:120%; color: white;">C'est la vie</h4>
+
+    <button class="back";><span><a href="{{ url('/sinhvien/dashboard') }}">Back</a></span></button>
+    <br><br><br><br>
+
+    <h1 style="color:white;"><center>Registed class list</center></h1>
+
+    <div class="tbl"><center>
+        <table id="t03">
                 <tr>
-                                    
-                    <th>Ten mon hoc</th>
-                    <th>Giao vien giang day</th>
-                    <th>Thoi gian bat dau</th>
-                    <th>Thoi gian ket thuc</th>
-                    <th>Ngay bat dau</th>
-                    <th>Ngay ket thuc</th>
-                    <th>Dia diem hoc</th>
-                    <th>Huy dang ky</th>
+                    <th> No </th>        
+                    <th>Subject name</th>
+                    <th>Teacher</th>
+                    <th>Start at</th>
+                    <th>End at</th>
+                    <th>Start date</th>
+                    <th>Finish at</th>
+                    <th>Place</th>
+                    <th>Status</th>
 
                 </tr>
-            @for ($i = 0; $i < count($lops); $i++)    
+            @for ($i = 0; $i < count($lops); $i++)
+              
+            <tbody>
             <tr>
-            
+                <td><center>{{$i + 1}}</center></td>
                 <td>{{ $lops[$i]->mon_tenmon }}</td>
                 <td>{{ $lops[$i]->gv_ten }}</td>
-                <td>{{ $lops[$i]->thoigianbatdau }}</td>
-                <td>{{ $lops[$i]->thoigianketthuc }}</td>
-                <td>{{ $lops[$i]->ngaybatdau }}</td>
-                <td>{{ $lops[$i]->ngaykethuc }}</td>
+                <td><center>{{ $lops[$i]->thoigianbatdau }}</center></td>
+                <td><center>{{ $lops[$i]->thoigianketthuc }}</center></td>
+                <td><center>{{ $lops[$i]->ngaybatdau }}</center></td>
+                <td><center>{{ $lops[$i]->ngaykethuc }}</center></td>
                 <td>{{ $lops[$i]->diadiemhoc }}</td>
                 {{ Form::open(['route' => ['delDangky', $lops[$i]->lop_id], 'method' => 'delete']) }}
-                <td> <button type="submit">Huy dang ky</button></td>
+                <td><center><button class="btn" type="submit">Cancel</button></center></td>
                                     {{ Form::close() }}
                   
             </tr> 
+            
+            </tbody>
             @endfor
             </table>          
         
-        </div>
+        
+
         <br>
         @if(!empty(Session::get('xoadangky')))
            
              <strong>{{ Session::get('xoadangky') }}</strong>
             
          @endif
+</center></div>
+
 </body>
 
 <style>
-table, th, td {
-    border: 1px solid black;
+th, td {
+    border: 1px solid white;
 }
+
 </style>
 </html>

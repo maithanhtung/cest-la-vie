@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Giao vien</title>
+    <link href="{{ asset('assets/css/gv.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <button><a href="{{ url('/giaovien/logout')}}">Log out</a></button>

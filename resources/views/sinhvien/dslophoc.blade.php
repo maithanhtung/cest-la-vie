@@ -2,40 +2,44 @@
 <html>
 <head>
 	<title>Sinh vien</title>
+    <link href="{{ asset('assets/css/sv.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<button><a href="{{ url('/sinhvien/dashboard') }}">Back</a></button>
-<br>
-<h1><center>Danh sach lop hoc cua mon {{ $tenmon }}</center></h1>
-		<div class="container">
-            <table style="width:100%; text-align:left;">
+    <h4 style="font-size:120%; color: white;">C'est la vie</h4>
+
+    <button class="back"><span><a href="{{ url('/sinhvien/dashboard') }}">Back</a></span></button>
+
+    <br><br><br><br>
+    <h1 style="color:white;"><center>Class list of subject: {{ $tenmon }}</center></h1>
+		<div class="tbl"><center>
+            <table id="t02">
                 <tr>
-                    <th>So thu tu</th>
-                    <th>Giao vien giang day</th>
-                    <th>Thoi gian bat dau</th>
-                    <th>Thoi gian ket thuc</th>
-                    <th>Ngay bat dau</th>
-                    <th>Ngay ket thuc</th>
-                    <th>Dang ky</th>
+                    <th>No</th>
+                    <th>Teacher</th>
+                    <th>Start at</th>
+                    <th>End at</th>
+                    <th>Start date</th>
+                    <th>Finish</th>
+                    <th>Status</th>
                    
                     
                 </tr>
                <?php $i =1; ?>
             @foreach ($lops as $lop)        
             <tr>
-                <td>{{$i}}</td>
+                <td><center>{{$i}}</center></td>
                 <td>{{ $lop->gv_ten }}</td>
-                <td>{{ $lop->thoigianbatdau }}</td>
-                <td>{{ $lop->thoigianketthuc }}</td>
-                <td>{{ $lop->ngaybatdau }}</td>
-                <td>{{ $lop->ngaykethuc}}</td>
-                <td><button><a href="{{ url('/sinhvien/dangky/'.$lop->lop_id) }}">Dang ky</a></button></td>  
+                <td><center>{{ $lop->thoigianbatdau }}</center></td>
+                <td><center>{{ $lop->thoigianketthuc }}</center></td>
+                <td><center>{{ $lop->ngaybatdau }}</center></td>
+                <td><center>{{ $lop->ngaykethuc}}</center></td>
+                <td><center><button class="btn"><a href="{{ url('/sinhvien/dangky/'.$lop->lop_id) }}">Register</a></button></center></td>  
             </tr> 
             <?php $i++; ?>
             @endforeach
             </table>          
 		
-        </div>
+        </center></div>
         <br>
         @if(!empty(Session::get('dangky')))
            
@@ -45,8 +49,9 @@
 </body>
 
 <style>
-table, th, td {
-    border: 1px solid black;
+table{
+    border: 1px solid white;
 }
+
 </style>
 </html>

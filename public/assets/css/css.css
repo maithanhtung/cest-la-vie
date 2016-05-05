@@ -62,10 +62,16 @@ a:active {
     color: #9933ff;
 }
 body#ind {
-    background-image: url(../images/nc.jpg);
+   /* background-image: url(../images/nc.jpg);
     background-repeat: no-repeat;
-    background-color: "black";
-    background-size: 100% ;
+    background-color: #ffccff;
+    background-size: auto;
+    background-image: auto;*/
+  background: url(../images/nc.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 body#log {
     background-image: url("images/login.jpg");
