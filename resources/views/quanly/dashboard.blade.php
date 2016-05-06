@@ -2,20 +2,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Quan ly - Sinh vien</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" type="text/css" href="css.css">
+        <title>Director</title>
+        <link href="{{ asset('assets/css/ql.css') }}" rel="stylesheet" type="text/css" />
+        <!-- <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="css.css"> -->
 
     </head>
     <body>
     @if(Auth::guard('quanly')->check())
-      <h3>Welcome  {{ Auth::guard('quanly')->user()->name }}</h3>
-      @endif
+    <h3 style="color:white;">Welcome, {{ Auth::guard('quanly')->user()->name }}</h3>
+    @endif
     
-
-        
-    <button><a href="{{ url('/quanly/logout') }}">Logout</a></button><br>
+    <button class="logout"><a href="{{ url('/quanly/logout') }}">Logout</a></button><br>
 
     <h1><center>Quan ly home page</center></h1>
         <div class="container">

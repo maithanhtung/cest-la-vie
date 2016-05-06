@@ -1,46 +1,63 @@
-<button><a href="{{ url('/giaovien/dashboard') }}">Giao vien</a></button>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Teacher</title>
+  <link href="{{ asset('assets/css/gv.css') }}" rel="stylesheet" type="text/css" />
+  
+</head>
 
-<div class="container">
-            {!! Form::open(array('route' => 'postLophoc')) !!}
-            {!! Form::select('mon', $mons) !!}
-             <table style="width:100%; text-align:left;">
-                <tr>
+<body>
+  <h4 style="font-size:120%; color: black;">C'est la vie</h4>
+
+
+  <button class="hmpg"><a href="{{ url('/giaovien/dashboard') }}">Homepage</a></button>
+  <center><div>
+    <center><div class="bar">
+      Subject:{!! Form::open(array('route' => 'postLophoc')) !!}
+      {!! Form::select('mon', $mons) !!}
+     </div></center>
+             <table id="addtbl">
+                <!-- <tr>
                   <th></th>
                   <th></th>
-                </tr>
+                </tr> -->
+<br>
            <tr>    
-             <td>Ngay bat dau: </td>  
+             <td>Start date: </td>  
              <td> {!! Form::input('date', 'ngaybatdau') !!}</td>
           </tr>
              
             <tr>    
-             <td>Ngay ket thuc: </td>  
+             <td>Finish: </td>  
              <td>{!! Form::input('date', 'ngaykethuc') !!}</td>
            </tr>
 
            <tr>    
-             <td>Thoi gian bat dau: </td>  
+             <td>Start at: </td>  
              <td>{!! Form::input('time', 'thoigianbatdau') !!}</td>
            </tr>
 
            <tr>    
-             <td>Thoi gian ket thuc: </td>  
+             <td>End at: </td>  
              <td>{!! Form::input('time', 'thoigianketthuc') !!}</td>
            </tr>
 
            <tr>    
-             <td>Dia diem hoc: </td>  
+             <td>Place: </td>  
              <td>{!! Form::input('string', 'diadiemhoc') !!}</td>
            </tr>
               
    
-       </table>
-       <br>
-            {!! Form::submit('Add') !!}
+        </table>
+        <br>
+
+        
+            {!! Form::submit('Add class') !!}
 
             {!! Form::close() !!}
+        
 
-        </div>
+       </div> </center>
          @if ($errors->has('ngaybatdau'))<strong>{{ $errors->first('ngaybatdau') }}</strong> @endif
         @if ($errors->has('ngaykethuc'))<strong>{{ $errors->first('ngaykethuc') }}</strong> @endif
         @if ($errors->has('thoigianbatdau'))<strong>{{ $errors->first('thoigianbatdau') }}</strong> @endif
@@ -51,3 +68,6 @@
           M vua tao Lop hoc co id la 
             
          @endif
+
+</body>
+</html>

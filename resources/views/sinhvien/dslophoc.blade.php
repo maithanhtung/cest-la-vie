@@ -43,7 +43,7 @@
         <br>
         @if(!empty(Session::get('dangky')))
            
-             <strong>{{ Session::get('dangky') }}</strong>
+             <center><strong><div id="tbsv">{{ Session::get('dangky') }}</div></strong></center>
             
          @endif
 </body>

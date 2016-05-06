@@ -28,7 +28,6 @@
                 </tr>
             @for ($i = 0; $i < count($lops); $i++)
               
-            <tbody>
             <tr>
                 <td><center>{{$i + 1}}</center></td>
                 <td>{{ $lops[$i]->mon_tenmon }}</td>
@@ -44,7 +43,7 @@
                   
             </tr> 
             
-            </tbody>
+            
             @endfor
             </table>          
         
@@ -53,7 +52,7 @@
         <br>
         @if(!empty(Session::get('xoadangky')))
            
-             <strong>{{ Session::get('xoadangky') }}</strong>
+             <center><strong><div id="tbsv">{{ Session::get('xoadangky') }}</div></strong></center>
             
          @endif
 </center></div>

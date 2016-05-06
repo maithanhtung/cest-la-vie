@@ -43,7 +43,7 @@ class SinhvienController extends Controller
 
     public function dangky($lop_id){
       if (Dangky::where('lop_id','=',$lop_id)->where('sv_id','=',Auth::guard('sinhvien')->user()->id)->exists() ) {
-        return redirect()->back()->with('dangky','Ban da dang ky lop nay');
+        return redirect()->back()->with('dangky',"You have registered this class!");
       }
       else{
       $dangky = new Dangky;
@@ -51,7 +51,7 @@ class SinhvienController extends Controller
       $dangky->sv_id = Auth::guard('sinhvien')->user()->id;
       $dangky->save();
 
-      return redirect()->back()->with('dangky','Dang ky thanh cong');
+      return redirect()->back()->with('dangky','Registered successfully!');
       }
     }
 
@@ -89,6 +89,6 @@ class SinhvienController extends Controller
       if( Dangky::where('lop_id','=',$lop_id)->where('sv_id','=',Auth::guard('sinhvien')->user()->id)->exists() ){
           Dangky::where('lop_id','=',$lop_id)->where('sv_id','=',Auth::guard('sinhvien')->user()->id)->delete();
       }
-      return redirect()->back()->with('xoadangky','Huy dang ky thanh cong');
+      return redirect()->back()->with('xoadangky','Cancel class successfully!');
     }
 }

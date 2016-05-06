@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Giao vien</title>
+    <title>Teacher</title>
+    <link href="{{ asset('assets/css/gv.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<button><a href="{{ url('/giaovien/dashboard') }}">Back</a></button>
-<br>
-<h1><center>Danh sach sinh vien da dang ky</center></h1>
-        <div class="container">
-            <table style="width:100%; text-align:left;">
-                <tr>
-                                    
-                    <th>Ma sinh vien</th>
-                    <th>Ten sinh vien</th>
-                    <th>Thoi diem dang ky</th>
+    <h4 style="font-size:120%; color: black;">C'est la vie</h4>
 
-                </tr>
+    <button class="back"><span><a href="{{ url('/giaovien/dashboard') }}">Back</a></span></button>
+  <br><br>
+    
+    <div class="tbl"><center>
+        <h1>List of registered students</h1>
+        <table id="t02">
+            <tr>           
+                <th>Student code</th>
+                <th>Full name</th>
+                <th><center>Registered at</center></th>
+
+            </tr>
             @for ($i = 0; $i < count($sinhviens); $i++)    
             <tr>
             
@@ -26,12 +29,12 @@
             @endfor
             </table>          
         
-        </div>
+    </center></div>
 </body>
 
 <style>
-table, th, td {
+/*table, th, td {
     border: 1px solid black;
-}
+}*/
 </style>
 </html>

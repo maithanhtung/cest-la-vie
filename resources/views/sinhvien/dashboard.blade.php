@@ -3,6 +3,7 @@
 <head>
 	<title>Student</title>
     <link href="{{ asset('assets/css/sv.css') }}" rel="stylesheet" type="text/css" />
+   
 </head>
 <body>
 
@@ -29,13 +30,13 @@
         </tr>
         <?php $i=1; ?>
         @foreach ($mons as $mon)        
-        <tbody>
+        
         <tr>
             <td>{{$i}}</td>
             <td>{{ $mon->mon_tenmon }}</td>
             <td><center><button class="btn"><a href="{{  url('/sinhvien/viewlop/'.$mon->mon_id) }}">Detail</a></button></center></td>
         </tr>
-        </tbody> 
+
         <?php $i++; ?>
         @endforeach
     </table>          
