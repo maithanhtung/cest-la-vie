@@ -13,51 +13,51 @@
     <h3 style="color:white;">Welcome, {{ Auth::guard('quanly')->user()->name }}</h3>
     @endif
     
-    <button class="logout"><a href="{{ url('/quanly/logout') }}">Logout</a></button><br>
+    <button class="logout"><a href="{{ url('/quanly/logout') }}">Log out</a></button><br>
+<br><br>    
+    <h1 style="color:white"><center>Director Homepage</center></h1>
 
-    <h1><center>Quan ly home page</center></h1>
-        <div class="container">
-            <table style="width:100%; text-align:left; ">
+    <div class="tbl"><center>
+        <table id="t01">
             <tr>
-                    <th>Danh sach</th>
-                    <th>So luong</th> 
-                    <th></th>
-                    
-             </tr>
-                   
+                    <th style="text-align: left;">Part</th>
+                    <th>Total</th> 
+                    <th>Status</th> 
+            </tr>
+                       
             <tr>
-                <td>Mon hoc</td>
-                <td>{{ $slmon }}</td> 
-                <td><button><a href="{{ url('/quanly/viewmon') }}">Chi tiet</a></button></td>
+                <td>Subjects</td>
+                <td><center>{{ $slmon }}</center></td> 
+                <td><center><button class="btn"><a href="{{ url('/quanly/viewmon') }}">Detail</a></button></center></td>
             </tr> 
 
             <tr>
-                <td>Lop hoc</td>
-                <td>{{ $sllop }}</td> 
-                <td><button><a href="{{ url('/quanly/viewlop') }}">Chi tiet</a></button></td>
+                <td>Classes</td>
+                <td><center>{{ $sllop }}</center></td> 
+                <td><center><button class="btn"><a href="{{ url('/quanly/viewlop') }}">Detail</a></button></center></td>
             </tr>
 			
 			 <tr>
-                <td>Giao vien</td>
-                <td>{{ $slgv }}</td> 
-                <td><button><a href="{{ url('/quanly/viewgv') }}">Chi tiet</a></button></td>
+                <td>Teachers</td>
+                <td><center>{{ $slgv }}</center></td> 
+                <td><center><button class="btn"><a href="{{ url('/quanly/viewgv') }}">Detail</a></button></center></td>
             </tr>
 
             <tr>
-                <td>Sinh vien</td>
-                <td>{{ $slsv }}</td> 
-                <td><button><a href="{{ url('/quanly/viewsv') }}">Chi tiet</a></button></td>
+                <td>Students</td>
+                <td><center>{{ $slsv }}</center></td> 
+                <td><center><button class="btn"><a href="{{ url('/quanly/viewsv') }}">Detail</a></button></td>
             </tr>
             
            
             </table>
-        </div>
+        </center></div>
        
     </body>
     <style>
-table, th, td {
+/*table, th, td {
     border: 1px solid black;
-}
+}*/
 </style>
 </html>
 

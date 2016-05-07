@@ -1,24 +1,32 @@
-<button><a href="{{url('/quanly/viewgv')}}">Quan ly giao vien</a></button>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Director</title>
+    <link href="{{ asset('assets/css/ql.css') }}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <h4 style="font-size:120%; color: white;"><a href="{{url('/quanly/dashboard')}}">✲ Director Homepage ✲ </a></h4>
 
-<div class="container">
+  <button class="back"><a href="{{ url('/quanly/viewgv') }}">« BACK</a></button>
+<br><br><br>
+
+  <div class="tbl"><center>
+  <h2 style="color: white;">Add a new teacher</h2>
             {!! Form::open(array('route' => 'postGiaovien')) !!}
-             <table style="width:100%; text-align:left;">
-                <tr>
-                  <th></th>
-                  <th></th>
-                </tr>
+      <table id="tbladd">
+          
            <tr>    
-             <td>Ma giao vien: </td>  
+             <td>Teacher code: </td>  
              <td> {!! Form::input('string', 'gv_magv') !!}</td>
           </tr>
 
             <tr>    
-             <td>Ten giao vien: </td>  
+             <td>Full name: </td>  
              <td>{!! Form::input('string', 'gv_ten') !!}</td>
            </tr>
 
            <tr>    
-             <td>Mat khau:</td>  
+             <td>Password: </td>  
              <td> {!! Form::input('string', 'password') !!}</td>
           </tr>
 
@@ -35,6 +43,6 @@
         @if ($errors->has('password'))<strong>{{ $errors->first('password') }}</strong> @endif
         @if(!empty(Session::get('tengiaovien')))
            
-            Giao vien <strong>{{ Session::get('tengiaovien')}}</strong> has been added successfully!
+          <h3 style="color: white;"> We have a new teacher: <span id="sp2">{{ Session::get('tengiaovien')}}</span></h3>
             
          @endif

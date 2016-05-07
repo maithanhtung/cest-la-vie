@@ -2,50 +2,57 @@
 <html>
     <head>
         <title>Quan ly - Giao vien</title>
+        <link href="{{ asset('assets/css/ql.css') }}" rel="stylesheet" type="text/css" />
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" type="text/css" href="css.css">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="css.css"> -->
 
     </head>
     <body>
-    <button><a href="{{url('/quanly/dashboard')}}">Quan ly</a></button>
-    <h1><center>Quan ly giao vien</center></h1>
-        <div class="container">
-            <table style="width:100%; text-align:left;">
+    <h4 style="font-size:120%; color: white;"><a href="{{url('/quanly/dashboard')}}">✲ Director Homepage ✲ </a></h4>
+
+    <button class="back"><a href="{{url('/quanly/dashboard')}}">« BACK</a></button>
+
+    <h1 style="color: white;"><center>Teacher list</center></h1>
+    <br><br><br>
+        <div class="tbl"><center>
+            <table id="t02">
                 <tr>
-                    <th>Ma giao vien</th>
-                    <th>Ten giao vien</th> 
-                    <th>Cac lop day</th>
-                    <th></th>
+                    <th>Teacher code</th>
+                    <th style="text-align: left;">Full name</th> 
+                    <th>Teaching class</th>
+                    <th>Status</th>
                     
                 </tr>
             @if($giaoviens != null)
             @foreach ($giaoviens as $giaovien)        
             <tr>
-                <td>{{ $giaovien->gv_magv }}</td>
+                <td><center>{{ $giaovien->gv_magv }}</center></td>
                 <td>{{ $giaovien->gv_ten }}</td> 
-                <td><button><a href="{{ url('/quanly/viewlopGv/'.$giaovien->id) }}">Chi tiet</a></button></td>
+                <td><center><button class="btn"><a href="{{ url('/quanly/viewlopGv/'.$giaovien->id) }}">Detail</a></button></center></td>
                 {{ Form::open(['route' => ['delGiaovien', $giaovien->id], 'method' => 'delete']) }}
-                <td> <button type="submit">Xoa GV</button></td>
+                <td><center><button class="btndel">Delete</button></center></td>
                                     {{ Form::close() }}
                 
             </tr> 
             
             @endforeach
             </table>
-            <button><a href="{{ url('/quanly/addgv') }}">Them giao vien</a></button>
-            <h2>Co tong so {{ count($giaoviens) }} giao vien</h2>
-            @endif
+            
         </div>
         @if(!empty(Session::get('tengiaovien')))
            
-            Giao vien <strong>{{ Session::get('tengiaovien')}}</strong> has been deleted successfully!
+            <h3 style="color: white;">Teacher <span id="sp1">{{ Session::get('tengiaovien')}}</span> has been deleted successfully!</h3>
             
          @endif
+
+        <button class="add"><a href="{{ url('/quanly/addgv') }}">+</a></button>
+            <h2 style="color: white; text-decoration: underline;">Total teacher: {{ count($giaoviens) }} </h2>
+            @endif
     </body>
     <style>
-table, th, td {
+/*table, th, td {
     border: 1px solid black;
-}
+}*/
 </style>
 </html>

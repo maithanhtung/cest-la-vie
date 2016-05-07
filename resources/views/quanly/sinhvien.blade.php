@@ -1,50 +1,57 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Quan ly - Sinh vien</title>
+        <title>Director - Student</title>
+        <link href="{{ asset('assets/css/ql.css') }}" rel="stylesheet" type="text/css" />
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" type="text/css" href="css.css">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="css.css"> -->
 
     </head>
     <body>
-    <button><a href="{{url('/quanly/dashboard')}}">Quan ly</a></button>
-    <h1><center>Quan ly sinh vien</center></h1>
-        <div class="container">
-            <table style="width:100%; text-align:left;">
+        <h4 style="font-size:120%; color: white;"><a href="{{url('/quanly/dashboard')}}">✲ Director Homepage ✲ </a></h4>
+        <button class="back"><a href="{{url('/quanly/dashboard')}}">« BACK</a></button>
+        <br><br>
+        <h1 style="color:white; font-size: 250%"><center>Student List</center></h1>
+        <div class="tbl"><center>
+            <table id="t02">
                 <tr>
-                    <th>Ma sinh vien</th>
-                    <th>Ten sinh vien</th> 
-                    <th>Tinh trang dang ki</th>
-                    <th></th>
+                    <th>Student code</th>
+                    <th style="text-align: left;">Full name</th> 
+                    <th>Registered class</th>
+                    <th>Status</th>
                     
                 </tr>
             @if($sinhviens != null)
             @foreach ($sinhviens as $sinhvien)        
             <tr>
-                <td>{{ $sinhvien->sv_masv }}</td>
+                <td><center>{{ $sinhvien->sv_masv }}</center></td>
                 <td>{{ $sinhvien->sv_ten }}</td> 
-                <td><button><a href="{{ url('/quanly/sinhviendk/'.$sinhvien->id)}}">xem</a></button></td>
+                <td><center><button class="btn"><a href="{{ url('/quanly/sinhviendk/'.$sinhvien->id)}}">Detail</a></button></center></td>
                 {{ Form::open(['route' => ['delSinhvien', $sinhvien->id], 'method' => 'delete']) }}
-                <td> <button type="submit">Xoa SV</button></td>
+                <td><center><button class="btndel">Delete</button></center></td>
                                     {{ Form::close() }}
             </tr> 
             
             @endforeach
             </table>
-            <button><a href="{{ url('/quanly/addsv') }}">Them sinh vien</a></button>
-            <h2>Co tong so {{ count($sinhviens) }} sinh vien</h2>
-            @endif
-        </div>
+            </center></div>
+
+            <button class="add"><a href="{{ url('/quanly/addsv') }}">+</a></button>
+
             @if(!empty(Session::get('tensinhvien')))
            
-            Sinh vien <strong>{{ Session::get('tensinhvien')}}</strong> has been deleted successfully!
+            <h3 style="color: white;">Student <span id="sp1">{{ Session::get('tensinhvien')}}</span> has been deleted successfully!
             
             @endif
+            <h2 style="color: white; text-decoration: underline;">Total student:  {{ count($sinhviens) }} </h2>
+            @endif
+        
+            
     </body>
     <style>
-table, th, td {
+/*table, th, td {
     border: 1px solid black;
-}
+}*/
 </style>
 </html>

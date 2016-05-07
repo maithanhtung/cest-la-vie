@@ -2,41 +2,45 @@
 <html>
 <head>
     <title>Quan ly - Lop hoc</title>
+    <link href="{{ asset('assets/css/ql.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<button><a href="{{ url('/quanly/viewlopGv/'.$gv_id) }}">Back</a></button>
-<br>
-<center><p>Danh sach sinh vien da dang ky lop <strong>{{ $mon_tenmon }}</strong> cua giao vien <strong>{{ $gv_ten }}</strong></p></center>
-        <div class="container">
-            <table style="width:100%; text-align:left;">
-                <tr>
-                                    
-                    <th>Ma sinh vien</th>
-                    <th>Ten sinh vien</th>
-                    <th>Thoi diem dang ky</th>
+    <h4 style="font-size:120%; color: white;"><a href="{{url('/quanly/dashboard')}}">✲ Director Homepage ✲ </a></h4>
+    <button class="back"><a href="{{ url('/quanly/viewlopGv/'.$gv_id) }}">« BACK</a></button>
+<br><br><br>
+
+    <center><h1 style="color: white;">List of registered students class <span id="sp2">{{ $mon_tenmon }}</span> of <span id="sp2">{{ $gv_ten }}</span></h1></center>
+
+    <div class="tbl"><center>
+        <table id="t02">
+                <tr>              
+                    <th>Student code</th>
+                    <th style="text-align: left;">Full name</th>
+                    <th>Registered at</th>
 
                 </tr>
             @foreach($dangkys as $dangky)  
             <tr>
             
-                <td>{{ $dangky->sv_masv }}</td>
+                <td><center>{{ $dangky->sv_masv }}</center></td>
                 <td>{{ $dangky->sv_ten }}</td>
-                <td>{{ $dangky->created_at }}</td>
+                <td><center>{{ $dangky->created_at }}</center></td>
             </tr> 
             @endforeach
             </table>          
         
-        </div>
-        <h2>Tong so sinh vien da dang ky la {{ count($dangkys) }}</h2>
+        </center></div>
+
+        <h2 style="color: white; text-decoration: underline;">Total registered student: {{ count($dangkys) }}</h2>
 </body>
 
 <style>
-table, th, td {
+/*table, th, td {
     border: 1px solid black;
 }
 
 p {
     font-size: 30px;
-}
+}*/
 </style>
 </html>

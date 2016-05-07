@@ -2,47 +2,52 @@
 <html>
 <head>
 	<title>Quan ly - Sinh vien</title>
+    <link href="{{ asset('assets/css/ql.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<button><a href="{{ url('/quanly/viewgv') }}">Back</a></button>
-<br>
-<h1><center>Danh sach lop hoc cua giao vien : {{ $gv_ten }}</center></h1>
-		<div class="container">
-            <table style="width:100%; text-align:left;">
+    <h4 style="font-size:120%; color: white;"><a href="{{url('/quanly/dashboard')}}">✲ Director Homepage ✲ </a></h4>
+
+    <button class="back"><a href="{{ url('/quanly/viewgv') }}">« BACK</a></button>
+<br><br><br>
+
+    <h1 style="color: white; font-size: 250%;"><center>Teaching class list of: {{ $gv_ten }}</center></h1>
+
+    <div class="tbl"><center>
+            <table id="t03">
                 <tr>
-                    <th>Id lop hoc</th>
-                    <th>Mon hoc</th>
-                    <th>Thoi gian bat dau</th>
-                    <th>Thoi gian ket thuc</th>
-                    <th>Ngay bat dau</th>
-                    <th>Ngay ket thuc</th>
-                    <th>Danh sach sinh vien</th>
+                    <th>Class ID</th>
+                    <th style="text-align: left;">Subject</th>
+                    <th>Start at</th>
+                    <th>End at</th>
+                    <th>Start date</th>
+                    <th>Finish</th>
+                    <th>Student list</th>
                    
                     
                 </tr>
             @foreach($lops as $lop)        
             <tr>
-                <td>{{ $lop->lop_id }}</td>
+                <td><center>{{ $lop->lop_id }}</center></td>
                 <td>{{ $lop->mon_tenmon }}</td>
-                <td>{{ $lop->thoigianbatdau }}</td>
-                <td>{{ $lop->thoigianketthuc }}</td>
-                <td>{{ $lop->ngaybatdau }}</td>
-                <td>{{ $lop->ngaykethuc}}</td> 
-                <td><button><a href=" {{ url('/quanly/viewsvlopGv/'.$lop->lop_id) }}">Chi tiet</a></button></td>
+                <td><center>{{ $lop->thoigianbatdau }}</center></td>
+                <td><center>{{ $lop->thoigianketthuc }}</center></td>
+                <td><center>{{ $lop->ngaybatdau }}</center></td>
+                <td><center>{{ $lop->ngaykethuc}}</center></td> 
+                <td><center><button class="btn"><a href=" {{ url('/quanly/viewsvlopGv/'.$lop->lop_id) }}">Detail</a></button></center></td>
             </tr> 
             
             @endforeach
             </table>          
 		
-        </div>
+        </center></div>
 
-        <p>Giao vien <strong>{{ $gv_ten }}</strong> co {{ count($lops)}} lop hoc </p>
+        <h2 style="color: white; text-decoration: underline;">Total teaching class of <span id="sp1">{{ $gv_ten }}</span>: {{ count($lops)}}  </h2>
         
 </body>
 
 <style>
-table, th, td {
+/*table, th, td {
     border: 1px solid black;
-}
+}*/
 </style>
 </html>

@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Quan ly - Mon hoc</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" type="text/css" href="css.css">
+        <title>Director - Subject</title>
+        <link href="{{ asset('assets/css/ql.css') }}" rel="stylesheet" type="text/css" />
+        <!-- <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="css.css"> -->
 
     </head>
     <body>
-    <button><a href="{{url('/quanly/dashboard')}}">Quan ly</a></button>
-
-    <h1><center>Quan ly mon</center></h1>
-        <div class="container">
-            <table style="width:100%; text-align:left;">
+    <h4 style="font-size:120%; color: white;"><a href="{{url('/quanly/dashboard')}}">✲ Director Homepage ✲ </a></h4>
+    <button class="back"><a href="{{url('/quanly/dashboard')}}">« BACK</a></button>
+<br><br><br>
+    <h1 style="color:white"><center>Subject list</center></h1>
+    <div class="tbl"><center>
+            <table id="t02">
                 <tr>
-                    <th>Ten mon</th>
-                    <th>Ma mon</th>
-                    <th>So lop</th> 
-                    <th></th>
+                    <th style="text-align: left;">Name</th>
+                    <th style="text-align: left;">Suject code</th>
+                    <th>Total class</th> 
+                    <th>Status</th>
                     <!-- <th>Date</th>
                     <th>Time</th>
                     <th>Place</th>
@@ -30,27 +31,29 @@
             <tr>
                 <td>{{ $mon->mon_tenmon }}</td>
                 <td>{{ $mon->mon_mamon }}</td> 
-                <td><button><a href="{{ url('/quanly/viewlopMon/'.$mon->mon_id) }}">{{ $mon->sllop }}</a></button></td>
+                <td><center><button class="btn"><a href="{{ url('/quanly/viewlopMon/'.$mon->mon_id) }}">{{ $mon->sllop }} - Detail</a></button></center></td>
                 {{ Form::open(['route' => ['delMonhoc', $mon->mon_id], 'method' => 'delete']) }}
-                <td> <button type="submit">Xoa Mon</button></td>
+                <td><center><button class="btndel" style="cursor: pointer;">Delete</button></center></td>
                                     {{ Form::close() }}
             </tr> 
             
             @endforeach
-            </table>
-            <button><a href="{{ url('/quanly/addmon') }}">Them mon</a></button>
-            <h2>Co tong so {{ count($mons) }} mon hoc</h2>
-            @endif
-        </div>
+        </table></center>
+    </div>
+            
             @if(!empty(Session::get('tenmon')))
            
-            Mon hoc <strong>{{ Session::get('tenmon')}}</strong> da duoc xoa thanh cong!
-            
+            <h3 style="color: white;">Successfully deleted subject: <span id="sp1">{{ Session::get('tenmon')}}</span></h3>           
             @endif
+            <h2 style="color: white; text-decoration: underline;">Total subject: {{ count($mons) }}</h2>
+            @endif
+        
+
+            <button class="add"><a href="{{ url('/quanly/addmon') }}">+</a></button>
     </body>
     <style>
-table, th, td {
+/*table, th, td {
     border: 1px solid black;
-}
+}*/
 </style>
 </html>
