@@ -58,15 +58,14 @@
         
 
        </div> </center>
-         @if ($errors->has('ngaybatdau'))<strong>{{ $errors->first('ngaybatdau') }}</strong> @endif
-        @if ($errors->has('ngaykethuc'))<strong>{{ $errors->first('ngaykethuc') }}</strong> @endif
-        @if ($errors->has('thoigianbatdau'))<strong>{{ $errors->first('thoigianbatdau') }}</strong> @endif
-        @if ($errors->has('thoigianketthuc'))<strong>{{ $errors->first('thoigianketthuc') }}</strong> @endif
-        @if ($errors->has('diadiemhoc'))<strong>{{ $errors->first('diadiemhoc') }}</strong> @endif
+         @if ($errors->has('ngaybatdau'))<h3><strong>{{ $errors->first('ngaybatdau')}}</strong></h3> @endif
+        @if ($errors->has('ngaykethuc'))<h3><strong>{{ $errors->first('ngaykethuc')}}</strong></h3> @endif
+        @if ($errors->has('thoigianbatdau'))<h3><strong>{{ $errors->first('thoigianbatdau')}}</strong></h3> @endif
+        @if ($errors->has('thoigianketthuc'))<h3><strong>{{ $errors->first('thoigianketthuc')}}</strong></h3> @endif
+        @if ($errors->has('diadiemhoc'))<h3><strong>{{ $errors->first('diadiemhoc')}}</strong></h3> @endif
         @if(!empty(Session::get('idlop')))
            
-          M vua tao Lop hoc co id la 
-            
+        <h3>Class has been added successfully!</h3>            
          @endif
 
 </body>

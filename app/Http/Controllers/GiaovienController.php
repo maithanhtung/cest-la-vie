@@ -52,13 +52,28 @@ class GiaovienController extends Controller
     }
 
     public function postLophoc(Request $request){
+        $messages = [
+        'ngaybatdau.required' => 'We need to know the start date!',
+        'ngaybatdau.after' => 'The start date must after today!',
+        'ngaykethuc.required' => 'Every class must has an end date!',
+        'ngaykethuc.after' => 'End date can not before start date!',
+        'thoigianbatdau.required' => 'We need to know the start time of the class!',
+        'thoigianbatdau.after' => 'The class must be started after 07:00 am!',
+        'thoigianbatdau.before' => 'The class must be started before 07:00 pm!',
+        'thoigianketthuc.required' => 'Every class must has an end time!',
+        'thoigianketthuc.after' => 'The end time must be after the start time!',
+        'thoigianketthuc.before' => 'Class must be ended before 11:00 pm! ',
+        'diadiemhoc.required' => 'The place field can not be empty!',
+        'diadiemhoc.max' => 'Place must be under 255 characters!'
+        ];
+
     	$validator = Validator::make($request->all(), [
             'ngaybatdau' => 'required|date|after:today',
             'ngaykethuc' => 'required|date|after:ngaybatdau',
-            'thoigianbatdau' => 'required|date_format:H:i',
-            'thoigianketthuc' => 'required|date_format:H:i|after:thoigianbatdau',
+            'thoigianbatdau' => 'required|date_format:H:i|after:07:00AM|before:07:00PM',
+            'thoigianketthuc' => 'required|date_format:H:i|after:thoigianbatdau|before:11:00PM',
             'diadiemhoc' => 'required|max:255'
-        ]);
+        ], $messages);
 
         if ($validator->fails()) {
             return redirect('giaovien/addlop')
@@ -111,6 +126,6 @@ class GiaovienController extends Controller
           Dangky::where('lop_id',$lop_id)->delete();
         }
         Lophoc::where('lop_id',$lop_id)->delete();
-      return redirect()->back()->with('xoalophoc','Huy lop hoc thanh cong');
+      return redirect()->back()->with('xoalophoc','Cancel class successfuly!');
     }
 }

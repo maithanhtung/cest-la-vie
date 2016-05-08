@@ -38,9 +38,9 @@
             {!! Form::close() !!}
 
         </div>
-        @if ($errors->has('gv_magv'))<strong>{{ $errors->first('gv_magv') }}</strong> @endif
-        @if ($errors->has('gv_ten'))<strong>{{ $errors->first('gv_ten') }}</strong> @endif
-        @if ($errors->has('password'))<strong>{{ $errors->first('password') }}</strong> @endif
+        @if ($errors->has('gv_magv'))<strong><h3 style="color: white;">{{ $errors->first('gv_magv') }}</h3></strong> @endif
+        @if ($errors->has('gv_ten'))<strong><h3 style="color: white;">{{ $errors->first('gv_ten') }}</h3></strong> @endif
+        @if ($errors->has('password'))<strong><h3 style="color: white;">{{ $errors->first('password') }}</h3></strong> @endif
         @if(!empty(Session::get('tengiaovien')))
            
           <h3 style="color: white;"> We have a new teacher: <span id="sp2">{{ Session::get('tengiaovien')}}</span></h3>

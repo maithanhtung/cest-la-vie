@@ -83,6 +83,7 @@ td:hover {
 table td:first-child {
 	text-align: center;
 }
+
 table#t01 tr:first-child th:first-child {
     -moz-border-radius-top-left:50px;
     -webkit-border-top-left-radius:50px;
@@ -104,6 +105,7 @@ table#t01 tr:first-child th:last-child {
     border-bottom-right-radius:47px;
  }
 
+ 
 /*table tr:nth-child(even) {
     background-color: #fff;
 }
@@ -146,12 +148,12 @@ table#t02 tr:first-child th:last-child {
     -webkit-border-top-right-radius:50px;
     border-top-right-radius:50px;
  }
- table#t02 tr:last-child td:first-child {
+ table#t02 tr:last-child td:first-child th:first-child {
     -moz-border-radius-bottom-left:50px;
     -webkit-border-bottom-left-radius:50px;
     border-bottom-left-radius:50px;
  }
- table#t02 tr:last-child td:last-child {
+ table#t02 tr:last-child td:last-child th:last-child {
     -moz-border-radius-bottom-right:15px;
     -webkit-border-bottom-right-radius:15px;
     border-bottom-right-radius:15px;

@@ -8,7 +8,7 @@
   <h4 style="font-size:120%; color: white;"><a href="{{url('/quanly/dashboard')}}">✲ Director Homepage ✲ </a></h4>
 
   <button class="back"><a href="{{ url('/quanly/viewmon') }}">« BACK</a></button>
-<br><br><br><br><br><br>
+<br><br><br><br>
   <div class="tbl"><center>
             {!! Form::open(array('route' => 'postMonhoc')) !!}
       <h2 style="color: white">Add a new Subject</h2>
@@ -31,11 +31,11 @@
             {!! Form::close() !!}
 
         </center></div>
-         @if ($errors->has('mon_mamon'))<strong>{{ $errors->first('mon_mamon') }}</strong> @endif
-         @if ($errors->has('mon_tenmon'))<strong>{{ $errors->first('mon_tenmon') }}</strong> @endif
+         @if ($errors->has('mon_mamon'))<strong><h3 style="color: white;">{{ $errors->first('mon_mamon') }}</h3></strong>@endif
+         @if ($errors->has('mon_tenmon'))<strong><h3 style="color: white;">{{ $errors->first('mon_tenmon') }}</h3></strong> @endif
         @if(!empty(Session::get('tenmonhoc')))
            
-            <h2 style="color: white; text-decoration: underline;">Subject <span id="sp1">"{{ Session::get('tenmonhoc')}}" </span> has been added successfully!</h2>
+            <h2 style="color: white; text-decoration: underline;">Subject <span id="sp1">{{ Session::get('tenmonhoc')}} </span> has been added successfully!</h2>
             
          @endif
       </body>

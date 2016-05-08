@@ -13,7 +13,7 @@ class CreateGiaovienTable extends Migration
     public function up()
     {
         Schema::create('giaovien', function (Blueprint $table) {
-            $table->increments('gv_id');
+            $table->increments('id');
             $table->string('gv_ten');
             $table->string('gv_magv')->unique();
             $table->string('password');

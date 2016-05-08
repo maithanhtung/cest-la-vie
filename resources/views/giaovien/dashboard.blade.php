@@ -59,7 +59,7 @@
         <br>
          @if(!empty(Session::get('xoalophoc')))
            
-             <strong>{{ Session::get('xoalophoc') }}</strong>
+             <strong><h3 style="color: black;">{{ Session::get('xoalophoc') }}</h3></strong>
             
          @endif
 </body>

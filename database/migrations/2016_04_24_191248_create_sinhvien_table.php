@@ -13,7 +13,7 @@ class CreateSinhvienTable extends Migration
     public function up()
     {
          Schema::create('sinhvien', function (Blueprint $table) {
-            $table->increments('sv_id');
+            $table->increments('id');
             $table->string('sv_ten');
             $table->string('sv_masv')->unique();
             $table->string('password');

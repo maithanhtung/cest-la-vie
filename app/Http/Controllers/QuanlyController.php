@@ -72,12 +72,18 @@ class QuanlyController extends Controller
     }
 
     public function postGiaovien(Request $request){
-
+        $messages = [
+        'gv_magv.required' => 'Teacher code field can not be empty!',
+        'gv_magv.unique' => 'This teacher code has been taken already!',
+        'gv_magv.max' => 'Teacher code must be under 255 characters!',
+        'gv_ten.required' => 'Teacher must have a name!',
+        'gv_ten.max' => 'Name of the teacher must be under 255 characters!',
+        ];
         $validator = Validator::make($request->all(), [
             'gv_magv' => 'required|unique:giaovien|max:255',
-            'gv_ten' => 'required',
+            'gv_ten' => 'required|max:255',
             'password' => 'required|min:6',
-        ]);
+        ],$messages);
 
         if ($validator->fails()) {
             return redirect('quanly/addgv')
@@ -128,12 +134,18 @@ class QuanlyController extends Controller
 	}
 
     public function postSinhvien(Request $request){
-
+        $messages = [
+        'sv_masv.required' => 'Student code field can not be empty!',
+        'sv_masv.unique' => 'This student code has been taken already!',
+        'sv_masv.max' => 'Student code must be under 255 characters!',
+        'sv_ten.required' => 'Student must have a name!',
+        'sv_ten.max' => 'Name of the student must be under 255 characters!',
+        ];
         $validator = Validator::make($request->all(), [
             'sv_masv' => 'required|unique:sinhvien|max:255',
-            'sv_ten' => 'required',
+            'sv_ten' => 'required|max:255',
             'password' => 'required|min:6',
-        ]);
+        ],$messages);
 
         if ($validator->fails()) {
             return redirect('quanly/addsv')
@@ -210,10 +222,18 @@ class QuanlyController extends Controller
     }
 
     public function postMonhoc(Request $request){
-      $validator = Validator::make($request->all(), [
+        $messages = [
+        'mon_mamon.required' => 'The subject code field must not be empty!',
+        'mon_mamon.unique' => 'This subject code has been taken already!',
+        'mon_mamon.max' => 'Subject code must be under 255 characters!',
+        'mon_tenmon.required' => 'The Name field must not be empty!',
+        'mon_tenmon.unique' => 'This name of subject has been taken already!',
+        'mon_tenmon.max' => 'Subject name must be under 255 characters!',
+        ];
+        $validator = Validator::make($request->all(), [
             'mon_mamon' => 'required|unique:monhoc|max:255',
             'mon_tenmon' => 'required|unique:monhoc|max:255',
-        ]);
+        ],$messages);
 
         if ($validator->fails()) {
             return redirect('quanly/addmon')

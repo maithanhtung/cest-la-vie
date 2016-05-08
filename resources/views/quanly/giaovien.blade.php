@@ -12,9 +12,9 @@
     <h4 style="font-size:120%; color: white;"><a href="{{url('/quanly/dashboard')}}">✲ Director Homepage ✲ </a></h4>
 
     <button class="back"><a href="{{url('/quanly/dashboard')}}">« BACK</a></button>
-
+    <br><br><br> 
     <h1 style="color: white;"><center>Teacher list</center></h1>
-    <br><br><br>
+    
         <div class="tbl"><center>
             <table id="t02">
                 <tr>

@@ -37,9 +37,9 @@
             {!! Form::close() !!}
 
         </center></div>
-        @if ($errors->has('sv_masv'))<strong>{{ $errors->first('sv_masv') }}</strong> @endif
-        @if ($errors->has('sv_ten'))<strong>{{ $errors->first('sv_ten') }}</strong> @endif
-        @if ($errors->has('password'))<strong>{{ $errors->first('password') }}</strong> @endif
+        @if ($errors->has('sv_masv'))<strong><h3 style="color: white;">{{ $errors->first('sv_masv') }}</h3></strong> @endif
+        @if ($errors->has('sv_ten'))<strong><h3 style="color: white;">{{ $errors->first('sv_ten') }}</h3></strong> @endif
+        @if ($errors->has('password'))<strong><h3 style="color: white;">{{ $errors->first('password') }}</h3></strong> @endif
         @if(!empty(Session::get('tensinhvien')))
            
            <h3 style="color: white"> We have a new student: <span id="sp2">{{ Session::get('tensinhvien')}}</span></h3> 
