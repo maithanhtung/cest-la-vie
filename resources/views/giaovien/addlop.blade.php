@@ -9,8 +9,7 @@
 <body>
   <h4 style="font-size:120%; color: black;">C'est la vie</h4>
 
-
-  <button class="hmpg"><a href="{{ url('/giaovien/dashboard') }}">Homepage</a></button>
+  <a id="hmpg" href="{{ url('/giaovien/dashboard') }}">Homepage</a>
   <center><div>
     <center><div class="bar">
       Subject:{!! Form::open(array('route' => 'postLophoc')) !!}
@@ -52,7 +51,7 @@
         <br>
 
         
-            {!! Form::submit('Add class') !!}
+            {!! Form::submit('Add') !!}
 
             {!! Form::close() !!}
         

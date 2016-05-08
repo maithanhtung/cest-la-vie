@@ -9,7 +9,7 @@ body {
 
 a:link, a:hover, a:active, a:visited {
 	text-decoration: none;
-  	color: inherit;
+  color: inherit;
 }
 
 .logout {
@@ -211,12 +211,12 @@ table#t02 tr:first-child th:last-child {
   left: 0;
 }
 
-.hmpg {
+a#hmpg {
     position: relative;
     background-color: #4caf50;
     border: none;
     font-size: 20px;
-    color: #ffffff;
+    color: white;
     padding: 15px;
     /*width: 20%;*/
     text-align: center;
@@ -228,25 +228,29 @@ table#t02 tr:first-child th:last-child {
     border-radius: 8%;
 }
 
-.hmpg:after {
+a#hmpg:after {
     content: "";
     background-color: #90ee90;
     display: block;
     position: absolute;
-    padding-top: 300%;
-    padding-left: 350%;
-    margin-left: -20px;
-    margin-top: -120%;
+    padding-top: 10%;
+    padding-left: 15%;
+    margin-left: 0px;
+    margin-top: -70%;
     opacity: 0;
     transition: all 0.8s
 }
 
-.hmpg:active:after {
+a#hmpg:active:after {
     padding: 0;
     margin: 0;
     opacity: 1;
     transition: 0s
 }
+
+/*a#hmpg:link a#hmpg:visited {
+  color: white;
+}*/
 
 .bar {
 	padding: 20px;
@@ -266,6 +270,8 @@ table#addtbl td:last-child {
 	background-color: rgba(0,0,0,0.0);
 	border: none;
 }
+
+
 
 /*button [type=submit] {
 	padding:10px;
