@@ -38,11 +38,33 @@ class GiaovienController extends Controller
         else{
             $lops = null;
         }    
-    	
-    	
-
-
         return view('giaovien.dashboard',['lops' => $lops]);
+    }
+
+    public function viewupdatePass(){
+        return view('giaovien.updatePassword');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'password' => 'required|min:6',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('giaovien/updatePassword')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        else{
+        $id = Auth::guard('giaovien')->user()->id;
+        $giaovien = Giaovien::findOrFail($id);
+        $giaovien->fill([
+            'password' => bcrypt($request->password)
+        ])->save();
+
+        return redirect()->back()->with('changePass', 'You have changed password successfully!');
+        }
     }
 
     public function viewaddlop(){

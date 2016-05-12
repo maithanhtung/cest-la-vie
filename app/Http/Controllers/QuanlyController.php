@@ -15,6 +15,7 @@ use App\Giaovien;
 use App\Lophoc;
 use App\Monhoc;
 use App\Sinhvien;
+use App\Quanly;
 
 class QuanlyController extends Controller
 {
@@ -39,6 +40,32 @@ class QuanlyController extends Controller
         $slgv = Giaovien::count();
 
         return view('quanly.dashboard',['slmon'=> $slmon , 'sllop' => $sllop , 'slsv'=> $slsv , 'slgv'=> $slgv]);
+    }
+
+    public function viewupdatePass(){
+        return view('quanly.updatePassword');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'password' => 'required|min:6',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('quanly/updatePassword')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        else{
+        $id = Auth::guard('quanly')->user()->id;
+        $quanly = Quanly::findOrFail($id);
+        $quanly->fill([
+            'password' => bcrypt($request->password)
+        ])->save();
+
+        return redirect()->back()->with('changePass', 'You have changed password successfully!');
+        }
     }
 
 

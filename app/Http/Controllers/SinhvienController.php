@@ -9,6 +9,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Cookie;
+
+use Validator;
 use App\Dangky;
 use App\Giaovien;
 use App\Lophoc;
@@ -25,6 +27,32 @@ class SinhvienController extends Controller
     public function viewDashboard(){
    	  $mons = Monhoc::all();
       return view('sinhvien.dashboard',['mons' => $mons]);
+    }
+
+    public function viewupdatePass(){
+        return view('sinhvien.updatePassword');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'password' => 'required|min:6',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('sinhvien/updatePassword')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        else{
+        $id = Auth::guard('sinhvien')->user()->id;
+        $sinhvien = Sinhvien::findOrFail($id);
+        $sinhvien->fill([
+            'password' => bcrypt($request->password)
+        ])->save();
+
+        return redirect()->back()->with('changePass', 'You have changed password successfully!');
+        }
     }
 
     public function viewLophoc($mon_id){

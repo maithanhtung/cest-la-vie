@@ -12,6 +12,7 @@
     @endif
 
     <button class="logout"><span><a href="{{ url('/sinhvien/logout') }}"><strong>LOG OUT</strong></a></span></button>
+    <button class="logout"><span><a href="{{ url('/sinhvien/updatePassword') }}"><strong>Change Password</strong></a></span></button>
 
     <h2 style="font-size: 250%; color: #00eaff;">Student Homepage</h2> 
 

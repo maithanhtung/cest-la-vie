@@ -32,6 +32,10 @@ Route::group(['middleware' => ['quanly']], function () {
     // 	return view('quanly.dashboard');})->name('viewdashboard');
     Route::get('/quanly/dashboard','QuanlyController@viewDashboard')->name('viewquanlyDashboard');
 
+    Route::get('/quanly/updatePassword','QuanlyController@viewupdatePass')->name('viewQLupdatePassword');
+
+    Route::post('/quanly/updatePassword','QuanlyController@updatePassword')->name('updateQLPassword');
+
 //----MON
     Route::get('/quanly/viewmon','QuanlyController@viewMonhoc')->name('viewquanlyMonhoc');
 
@@ -87,6 +91,10 @@ Route::group(['middleware' => ['sinhvien']], function () {
 
     Route::get('/sinhvien/dashboard','SinhvienController@viewDashboard')->name('viewsinhvienDashboard');
 
+    Route::get('/sinhvien/updatePassword','SinhvienController@viewupdatePass')->name('viewSVupdatePassword');
+
+    Route::post('/sinhvien/updatePassword','SinhvienController@updatePassword')->name('updateSVPassword');
+
     Route::get('/sinhvien/viewlop/{mon_id}','SinhvienController@viewLophoc')->name('viewsinhvienLophoc');
 
     Route::get('/sinhvien/dangky/{lop_id}','SinhvienController@dangky')->name('sinhvienDangky');
@@ -106,6 +114,10 @@ Route::get('/giaovien','GiaovienController@viewDashboard');
 Route::group(['middleware' => ['giaovien']], function () {
     
     Route::get('/giaovien/dashboard','GiaovienController@viewDashboard')->name('viewgiaovienDashboard');
+
+      Route::get('/giaovien/updatePassword','GiaovienController@viewupdatePass')->name('viewGVupdatePassword');
+
+    Route::post('/giaovien/updatePassword','GiaovienController@updatePassword')->name('updateGVPassword');
 
     Route::get('/giaovien/addlop','GiaovienController@viewaddlop')->name('viewaddlop');
 

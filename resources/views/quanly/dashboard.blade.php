@@ -13,7 +13,8 @@
     <h3 style="color:white;">Welcome, {{ Auth::guard('quanly')->user()->name }}</h3>
     @endif
     
-    <button class="logout"><a href="{{ url('/quanly/logout') }}">Log out</a></button><br>
+    <button class="logout"><a href="{{ url('/quanly/logout') }}">Log out</a></button>
+    <button class="logout"><a href="{{ url('/quanly/updatePassword') }}">Change Password</a></button><br>
 <br><br>    
     <h1 style="color:white"><center>Director Homepage</center></h1>
 

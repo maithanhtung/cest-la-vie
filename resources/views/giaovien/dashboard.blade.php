@@ -13,6 +13,7 @@
     @endif
     
     <button class="logout"><a href="{{ url('/giaovien/logout')}}">Log out ►</a></button>
+    <button class="logout"><a href="{{ url('/giaovien/updatePassword')}}">Change Password</a></button>
 
     <h2 style="font-size: 250%; color: #800080">Teacher Homepage</h2> 
 
@@ -50,8 +51,12 @@
             </tr> 
             
             @endforeach
+
+            @else
+            </table>  
+            <center><h3>You did not teach any class yet</h3></center>   
             @endif
-            </table>     
+
         </center></div>
 
 		<button class="add"><a href="{{ url('/giaovien/addlop') }}">+</a></button>
