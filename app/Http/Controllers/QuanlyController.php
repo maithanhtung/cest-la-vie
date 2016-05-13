@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Cookie;
 
+use Hash;
 use Validator;
 use App\Dangky;
 use App\Giaovien;
@@ -42,29 +43,36 @@ class QuanlyController extends Controller
         return view('quanly.dashboard',['slmon'=> $slmon , 'sllop' => $sllop , 'slsv'=> $slsv , 'slgv'=> $slgv]);
     }
 
-    public function viewupdatePass(){
+    public function viewupdateAccount(){
         return view('quanly.updatePassword');
     }
 
-    public function updatePassword(Request $request)
+    public function updateAccount(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'password' => 'required|min:6',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect('quanly/updatePassword')
-                        ->withErrors($validator)
-                        ->withInput();
-        }
-        else{
         $id = Auth::guard('quanly')->user()->id;
         $quanly = Quanly::findOrFail($id);
-        $quanly->fill([
-            'password' => bcrypt($request->password)
-        ])->save();
 
-        return redirect()->back()->with('changePass', 'You have changed password successfully!');
+        if (!Hash::check($request->oldPassword, $quanly->password)) {
+            return redirect()->back()->with('check','Old password is wrong!');
+        }
+        else{
+            $validator = Validator::make($request->all(), [
+            'password' => 'required|min:6',
+            'email' => 'email',
+        ]);
+
+            if ($validator->fails()) {
+                return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+            }
+            else{
+                $quanly->fill(['password' => bcrypt($request->password)])->save();
+                if ($request->email != null) {
+                    $quanly->fill(['email' => $request->email])->save();
+                }
+                return redirect()->back()->with('check', 'You have changed your account information successfully!');
+            }
         }
     }
 

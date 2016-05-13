@@ -32,9 +32,9 @@ Route::group(['middleware' => ['quanly']], function () {
     // 	return view('quanly.dashboard');})->name('viewdashboard');
     Route::get('/quanly/dashboard','QuanlyController@viewDashboard')->name('viewquanlyDashboard');
 
-    Route::get('/quanly/updatePassword','QuanlyController@viewupdatePass')->name('viewQLupdatePassword');
+    Route::get('/quanly/updateAccount','QuanlyController@viewupdateAccount')->name('viewQLupdateAccount');
 
-    Route::post('/quanly/updatePassword','QuanlyController@updatePassword')->name('updateQLPassword');
+    Route::post('/quanly/updateAccount','QuanlyController@updateAccount')->name('updateQLAccount');
 
 //----MON
     Route::get('/quanly/viewmon','QuanlyController@viewMonhoc')->name('viewquanlyMonhoc');
