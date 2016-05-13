@@ -24,7 +24,7 @@ class QuanlyController extends Controller
         $this->middleware('quanly');
    }
 
-//---------------------------------------DASHBOARD-----------------------------------------   
+//--------------------------------DASHBOARD-------------------------------------   
 	// public function index(){
  //        return view('quanly.dashboard');
  //    }
@@ -67,7 +67,7 @@ class QuanlyController extends Controller
                         ->withInput();
             }
             else{
-                $quanly->fill(['password' => bcrypt($request->password)])->save();
+                $quanly->fill(['password' => Hash::make($request->password)])->save();
                 if ($request->email != null) {
                     $quanly->fill(['email' => $request->email])->save();
                 }
@@ -77,7 +77,7 @@ class QuanlyController extends Controller
     }
 
 
-//----------------------------------------GIAOVIEN-----------------------------------------
+//-------------------------------------GIAOVIEN-----------------------------------------
     public function viewGiaovien(){
 		return view('quanly.giaovien', ['giaoviens' => Giaovien::all()]);
 	}
@@ -134,7 +134,7 @@ class QuanlyController extends Controller
 
         $giaovien->gv_magv = $gv_magv;
         $giaovien->gv_ten = $gv_ten;
-        $giaovien->password = bcrypt($password);
+        $giaovien->password = Hash::make($password);
 
        $giaovien->save();
 
@@ -163,7 +163,7 @@ class QuanlyController extends Controller
     }
 
 
-//----------------------------------------SINHVIEN-----------------------------------------
+//-------------------------------------SINHVIEN-----------------------------------------
     public function viewSinhvien(){
 		return view('quanly.sinhvien', ['sinhviens' => Sinhvien::all()]);
 	}
@@ -196,7 +196,7 @@ class QuanlyController extends Controller
 
         $sinhvien->sv_masv = $sv_masv;
         $sinhvien->sv_ten = $sv_ten;
-        $sinhvien->password = bcrypt($password);
+        $sinhvien->password = Hash::make($password);
 
        $sinhvien->save();
 
@@ -235,7 +235,7 @@ class QuanlyController extends Controller
 
     }
 
-//---------------------------------------MONHOC-------------------------------------------------
+//---------------------------------MONHOC--------------------------------------------
     public function viewMonhoc(){
         $mons = Monhoc::all();
         foreach ($mons as $mon ) {
@@ -313,7 +313,7 @@ class QuanlyController extends Controller
     }
 
 
-//---------------------------------------LOPHOC-------------------------------------------------
+//---------------------------------LOPHOC---------------------------------------
 
     public function viewLophoc(){
         $lops = Lophoc::all();

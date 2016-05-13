@@ -27,7 +27,7 @@
 
            <tr>    
              <td>Password: </td>  
-             <td> {!! Form::input('password', 'password') !!}</td>
+             <td> {!! Form::input('string', 'password') !!}</td>
           </tr>
 
             
